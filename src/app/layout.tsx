@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PrimeReactProvider } from "primereact/api";
+import { ThemeProvider } from "next-themes";
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className="bg-white dark:bg-black">
+        <ThemeProvider attribute="class">
+          <PrimeReactProvider>{children}</PrimeReactProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
