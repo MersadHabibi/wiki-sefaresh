@@ -1,7 +1,10 @@
+import Navbar from "@/components/templates/navbar/Navbar";
+import { FIranSans } from "@/config/fonts";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import "./globals.css";
-import { PrimeReactProvider } from "primereact/api";
 import { ThemeProvider } from "next-themes";
+import { PrimeReactProvider } from "primereact/api";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
@@ -16,10 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="bg-white dark:bg-black">
+    <html lang="fa" dir="rtl" className="light">
+      <body
+        className={cn(
+          "min-h-dvh bg-neutral-100 text-sm font-normal text-font-color dark:bg-neutral-950 dark:text-font-color-dark sm:text-base",
+          FIranSans.className,
+        )}>
         <ThemeProvider attribute="class">
-          <PrimeReactProvider>{children}</PrimeReactProvider>
+          <PrimeReactProvider>
+            <Navbar />
+            {children}
+          </PrimeReactProvider>
+          {/* <ChangeThemeBtn /> */}
         </ThemeProvider>
       </body>
     </html>

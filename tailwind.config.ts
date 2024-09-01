@@ -18,7 +18,13 @@ const config: Config = {
         xs: "480px",
       },
       boxShadow: {
-        primary: "0 35px 60px -15px rgba(0, 0, 0, 0.3)",
+        first: "0 10px 30px -15px rgba(0, 0, 0, 0.2)",
+      },
+      colors: {
+        primary: "#1d4ed8",
+        "primary-dark": "#276EF6",
+        "font-color": "#111827",
+        "font-color-dark": "#ffff",
       },
     },
   },
