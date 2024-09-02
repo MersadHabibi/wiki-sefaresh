@@ -2,6 +2,7 @@
 
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
+import Link from "next/link";
 
 const stores = [
   "دیجی کالا",
@@ -58,10 +59,12 @@ export default function Stores() {
           {store}
         </button>
       ))}
-      <button className="flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-white shadow-first shadow-black/30 transition-all hover:brightness-90 dark:bg-primary-dark sm:text-lg">
+      <Link
+        href={"/stores"}
+        className="flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-white shadow-first shadow-black/30 transition-all hover:brightness-90 dark:bg-primary-dark sm:text-lg">
         <span>دیدن همه فروشگاه ها</span>
         <ArrowLeftIcon className="size-5 sm:size-6" />
-      </button>
+      </Link>
     </div>
   );
 }

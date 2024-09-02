@@ -2,6 +2,7 @@ import { FMorabba } from "@/config/fonts";
 import { cn } from "@/lib/utils";
 import { CircleAlertIcon, CirclePlusIcon, EyeIcon } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function LandingHeader() {
   return (
@@ -24,22 +25,26 @@ export default function LandingHeader() {
           تجربیات شما از سفارشات آنلاین
         </h2>
         <div className="mx-auto my-6 h-1 w-56 rounded-sm bg-second sm:my-8 lg:mx-0 xl:my-10"></div>
-        <h3 className="flex items-center gap-x-2 text-start font-medium text-gray-700 dark:text-gray-200 xl:gap-x-3 xl:text-xl">
-          <CircleAlertIcon className="mb-0.5 size-6 xl:size-7 " />
+        <h3 className="flex items-center gap-x-2 font-medium text-gray-700 dark:text-gray-200 xl:gap-x-3 xl:text-xl">
+          {/* <CircleAlertIcon className="mb-0.5 size-6 xl:size-7 " /> */}
           <span>
             قبل از سفارش، تجربیات بقیه را بخوانید و بعد از سفارش، تجربه خود را
             بنویسید.
           </span>
         </h3>
         <div className="flex w-full flex-col items-center gap-x-4 gap-y-2 pt-7 xs:flex-row xs:pt-5 lg:max-w-md xl:max-w-2xl">
-          <button className="btn h-12 w-full shrink border-none bg-second text-font-color-dark transition-all hover:bg-second hover:brightness-75 dark:bg-second xl:text-lg">
+          <Link
+            href={"/experiences"}
+            className="btn h-12 w-full shrink border-none bg-second text-base text-font-color-dark transition-all hover:bg-second hover:brightness-75 dark:bg-second xl:text-lg">
             <EyeIcon className="size-5 xl:size-6" />
             <span>مشاهده تجربیات</span>
-          </button>
-          <button className="btn h-12 w-full shrink border-none bg-primary text-font-color-dark transition-all hover:bg-primary hover:brightness-75 dark:bg-primary-dark xl:text-lg">
+          </Link>
+          <Link
+            href={"/experiences/new-experience"}
+            className="btn h-12 w-full shrink border-none bg-primary text-base text-font-color-dark transition-all hover:bg-primary hover:brightness-75 dark:bg-primary-dark xl:text-lg">
             <CirclePlusIcon className="size-5 xl:size-6" />
             <span>ثبت تجربه</span>
-          </button>
+          </Link>
         </div>
       </div>
       <div className="w-full max-w-md xl:max-w-lg 2xl:max-w-xl">

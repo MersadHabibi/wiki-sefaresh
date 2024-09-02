@@ -1,6 +1,7 @@
 import { FMorabba } from "@/config/fonts";
 import { cn } from "@/lib/utils";
 import { ArrowLeftIcon, StoreIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function LastExperiences() {
   return (
@@ -16,7 +17,7 @@ export default function LastExperiences() {
         <div className="mx-auto h-1 w-40 rounded-full bg-primary dark:bg-primary-dark lg:mx-0"></div>
       </div>
       <div className="w-full space-y-4">
-        {new Array(4).fill("").map((_, index) => (
+        {new Array(3).fill("").map((_, index) => (
           <div
             key={index}
             className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
@@ -83,10 +84,12 @@ export default function LastExperiences() {
             </div>
           </div>
         ))}
-        <button className="btn btn-primary w-full gap-x-2 border-none bg-primary font-medium text-white sm:gap-x-4 sm:text-base">
+        <Link
+          href={"/experiences"}
+          className="btn btn-primary w-full gap-x-2 border-none bg-primary font-medium text-white sm:gap-x-4 sm:text-base">
           <span>دیدن همه تجربه ها</span>
           <ArrowLeftIcon className="size-5 sm:size-6" />
-        </button>
+        </Link>
       </div>
     </section>
   );
