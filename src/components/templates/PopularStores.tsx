@@ -56,22 +56,22 @@ export default function PopularStores() {
       <div className="shrink-0 lg:w-96 lg:pt-5 xl:w-[420px]">
         <h2
           className={cn(
-            "mb-4 text-2xl font-semibold sm:text-4xl",
+            "mb-3 text-2xl font-semibold sm:mb-4 sm:text-4xl",
             FMorabba.className,
           )}>
           فروشگاه های پر بازدید
         </h2>
-        <div className="mx-auto h-1 w-40 rounded-full bg-primary lg:mx-0"></div>
+        <div className="mx-auto h-1 w-40 rounded-full bg-primary dark:bg-primary-dark lg:mx-0"></div>
       </div>
-      <div className="flex flex-wrap justify-center gap-3 lg:justify-start">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
         {stores.slice(0, isXLDevice ? undefined : 20).map((store) => (
           <button
             key={store}
-            className="rounded-md bg-neutral-200 px-4 py-1 font-medium shadow-first shadow-black/35 transition-all hover:bg-primary hover:text-white hover:!shadow-inner sm:px-5 sm:py-1.5 sm:text-lg">
+            className="rounded-md bg-neutral-200 px-4 py-1 font-medium shadow-first shadow-black/25 transition-all hover:bg-primary hover:text-white hover:!shadow-inner dark:bg-neutral-900 dark:hover:bg-primary-dark sm:px-5 sm:py-1.5 sm:text-lg">
             {store}
           </button>
         ))}
-        <button className="flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-white shadow-first shadow-black/30 transition-all hover:brightness-90 sm:text-lg">
+        <button className="flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-white shadow-first shadow-black/30 transition-all hover:brightness-90 dark:bg-primary-dark sm:text-lg">
           <span>دیدن همه فروشگاه ها</span>
           <ArrowLeftIcon className="size-5 sm:size-6" />
         </button>

@@ -19,7 +19,7 @@ const config: Config = {
         xs: "480px",
       },
       boxShadow: {
-        first: "0 7px 10px -7px rgba(0, 0, 0, 0.2)",
+        first: "0 7px 7px -7px rgba(0, 0, 0, 0.2)",
       },
       colors: {
         primary: "#1d4ed8",
