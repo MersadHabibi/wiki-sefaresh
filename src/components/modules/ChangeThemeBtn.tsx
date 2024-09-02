@@ -2,7 +2,6 @@
 
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Skeleton } from "primereact/skeleton";
 import { useEffect, useState } from "react";
 
 export default function ChangeThemeBtn() {
@@ -15,11 +14,7 @@ export default function ChangeThemeBtn() {
 
   if (!isClient)
     return (
-      <Skeleton
-        width="24"
-        height="24"
-        className="size-6 rounded-full bg-white opacity-40 dark:bg-neutral-950"
-      />
+      <div className="size-6 rounded-full bg-white opacity-40 dark:bg-neutral-950" />
     );
 
   return (

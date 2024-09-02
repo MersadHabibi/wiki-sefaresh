@@ -5,7 +5,7 @@ import MobileSidebarMenu from "./MobileSidebarMenu";
 
 export default function Navbar() {
   return (
-    <header className="h-16 w-full border-b-primary bg-neutral-200 dark:border-none dark:bg-neutral-900">
+    <header className="h-16 w-full shrink-0 border-b-primary bg-neutral-200 dark:border-none dark:bg-neutral-900 sm:h-20">
       <div className="container flex h-full items-center justify-between">
         <Logo />
         <nav className="hidden items-center gap-x-5 sm:gap-x-10 md:flex">
