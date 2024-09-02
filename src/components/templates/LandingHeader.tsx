@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function LandingHeader() {
   return (
-    <section className="container flex min-h-[550px] flex-col-reverse items-center justify-between gap-x-6 pb-20 pt-5 text-center lg:h-[85dvh] lg:max-h-[500px] lg:flex-row lg:py-5 lg:text-start xl:max-h-[700px] xl:gap-x-10">
+    <section className="container flex min-h-[550px] flex-col-reverse items-center justify-between gap-x-6 pb-20 pt-5 text-center lg:h-[90dvh] lg:max-h-[500px] lg:flex-row lg:py-5 lg:text-start xl:max-h-[700px] xl:gap-x-10">
       <div>
         <h1
           className={cn(
