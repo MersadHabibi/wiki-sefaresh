@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="bg-neutral-100 dark:bg-neutral-950 lg:h-full">
-      <div className="container flex min-h-fit flex-col-reverse items-center justify-between gap-x-6 pb-20 pt-8 text-center lg:h-full lg:flex-row lg:py-10 lg:text-start xl:gap-x-10">
+      <div className="container flex flex-col-reverse items-center justify-between gap-x-6 pb-20 pt-5 text-center lg:h-full lg:max-h-[600px] lg:flex-row lg:py-5 lg:text-start xl:max-h-[700px] xl:gap-x-10 2xl:max-h-[800px]">
         <div>
           <h1
             className={cn(
@@ -24,8 +24,8 @@ export default function Home() {
           <p className="mt-2 text-xl font-bold text-gray-700 dark:text-font-color-dark/90 xs:text-2xl sm:mt-3 sm:text-3xl xl:mt-5 xl:text-4xl">
             تجربیات شما از سفارشات آنلاین
           </p>
-          <div className="bg-second mx-auto my-6 h-1 w-56 rounded-sm sm:my-8 lg:mx-0 xl:my-10"></div>
-          <p className="dark:text-red-0 flex items-center gap-x-2 text-start font-medium text-red-500 xl:gap-x-3 xl:text-xl">
+          <div className="mx-auto my-6 h-1 w-56 rounded-sm bg-second sm:my-8 lg:mx-0 xl:my-10"></div>
+          <p className="flex items-center gap-x-2 text-start font-medium text-gray-700 dark:text-gray-200 xl:gap-x-3 xl:text-xl">
             <CircleAlertIcon className="mb-0.5 size-6 xl:size-7 " />
             <span>
               قبل از سفارش تجربیات بقیه را بخوانید و بعد از سفارش تجربه خود را
@@ -33,7 +33,7 @@ export default function Home() {
             </span>
           </p>
           <div className="flex w-full flex-col items-center gap-x-4 gap-y-2 pt-7 xs:flex-row xs:pt-5 lg:max-w-md xl:max-w-2xl">
-            <button className="btn dark:bg-second bg-second h-12 w-full shrink border-none text-font-color-dark transition-all hover:bg-neutral-500 hover:brightness-75 xl:text-lg">
+            <button className="btn h-12 w-full shrink border-none bg-second text-font-color-dark transition-all hover:bg-neutral-500 hover:brightness-75 dark:bg-second xl:text-lg">
               <EyeIcon className="size-5 xl:size-6" />
               <span>مشاهده تجربیات</span>
             </button>

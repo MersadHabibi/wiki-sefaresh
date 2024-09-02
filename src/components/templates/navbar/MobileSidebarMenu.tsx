@@ -2,6 +2,7 @@
 
 import Logo from "@/components/modules/Logo";
 import NavLink from "@/components/modules/NavLink";
+import { FMorabba } from "@/config/fonts";
 import { cn } from "@/lib/utils";
 import {
   HomeIcon,
@@ -10,6 +11,7 @@ import {
   StoreIcon,
   XIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 
 const menuLinkStyles =
@@ -31,12 +33,22 @@ export default function MobileSidebarMenu() {
         onClick={() => setIsOpen(false)}>
         <div
           className={cn(
-            "fixed -right-full bottom-0 top-0 h-full w-full max-w-72 bg-neutral-50 px-6 py-4 transition-all dark:bg-neutral-950",
+            "fixed -right-full bottom-0 top-0 h-full w-full max-w-80 bg-neutral-50 px-6 py-4 transition-all dark:bg-neutral-950",
             isOpen && "right-0",
           )}
           onClick={(event) => event.stopPropagation()}>
           <div className="flex items-center justify-between">
-            <Logo className="!text-2xl" />
+            <div className="flex items-center gap-x-3">
+              <Logo />
+              <Link
+                href={"/"}
+                className={cn(
+                  "pb-1 text-2xl font-bold text-blue-700 dark:text-primary-dark",
+                  FMorabba.className,
+                )}>
+                ویکی سفارش
+              </Link>
+            </div>
             <button onClick={() => setIsOpen(false)}>
               <XIcon className="size-7" />
             </button>

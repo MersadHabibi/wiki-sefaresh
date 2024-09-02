@@ -1,17 +1,23 @@
-import { FMorabba } from "@/config/fonts";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function Logo({ className }: { className?: string }) {
   return (
-    <Link
-      href={"/"}
-      className={cn(
-        "pb-1 text-xl font-bold text-blue-700 dark:text-primary-dark sm:text-2xl",
-        FMorabba.className,
-        className,
-      )}>
-      ویکی سفارش
-    </Link>
+    <>
+      <Image
+        className={cn("hidden size-8 dark:block sm:size-10", className)}
+        src={"/svg/Logo.svg"}
+        alt="ویکی تجربه لوگو"
+        width={100}
+        height={100}
+      />
+      <Image
+        className={cn("block size-8 dark:hidden sm:size-10", className)}
+        src={"/svg/Logo-light.svg"}
+        alt="ویکی تجربه لوگو"
+        width={100}
+        height={100}
+      />
+    </>
   );
 }
