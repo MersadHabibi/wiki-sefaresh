@@ -1,8 +1,19 @@
+import { cn } from "@/lib/utils";
 import { StoreIcon } from "lucide-react";
 
-export default function ExperienceCard() {
+type TProps = {
+  classNames?: Partial<
+    Record<"container" | "storeName" | "body" | "title", string>
+  >;
+};
+
+export default function ExperienceCard({ classNames }: TProps) {
   return (
-    <div className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
+    <div
+      className={cn(
+        "w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900",
+        classNames?.container,
+      )}>
       <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
         <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
           <div className="flex items-center gap-x-3 text-second">
@@ -54,13 +65,30 @@ export default function ExperienceCard() {
             تاخیر سفارش
           </h2>
         </div>
-        <p className="mt-3 line-clamp-6 text-gray-700 dark:text-gray-300">
+        <p
+          className={cn(
+            "mt-3 line-clamp-6 text-gray-700 dark:text-gray-300",
+            classNames?.body,
+          )}>
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
           استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
           ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
           کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
           در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه .
+          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه . علی
+          تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می
+          باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
+          جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
+          طراحان رایانه . علی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود
+          ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و
+          آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها
+          شناخت بیشتری را برای طراحان رایانه . علی تکنولوژی مورد نیاز، و
+          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
+          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
+          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه . کاربردهای
+          متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
+          درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
+          نرم افزارها شناخت بیشتری را برای طراحان رایانه .
         </p>
       </div>
     </div>
