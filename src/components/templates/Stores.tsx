@@ -55,13 +55,13 @@ export default function Stores() {
       {stores.slice(0, isXLDevice ? undefined : 20).map((store) => (
         <button
           key={store}
-          className="rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-white hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary-dark sm:px-5 sm:py-1.5 sm:text-lg">
+          className="hover:text-font-color-white rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-font-color-dark hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary-dark sm:px-5 sm:py-1.5 sm:text-lg">
           {store}
         </button>
       ))}
       <Link
         href={"/stores"}
-        className="flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-white shadow-first shadow-black/30 transition-all hover:brightness-90 dark:bg-primary-dark sm:text-lg">
+        className="text-font-color-white flex items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-font-color-dark shadow-first shadow-black/30 transition-all hover:brightness-90 dark:bg-primary-dark sm:text-lg">
         <span>دیدن همه فروشگاه ها</span>
         <ArrowLeftIcon className="size-5 sm:size-6" />
       </Link>

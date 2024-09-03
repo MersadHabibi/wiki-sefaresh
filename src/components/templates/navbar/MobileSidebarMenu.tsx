@@ -82,7 +82,7 @@ export default function MobileSidebarMenu() {
       </button>
       <div
         className={cn(
-          "invisible fixed inset-0 w-full bg-black/30 opacity-0 backdrop-blur-sm transition-all dark:bg-white/5",
+          "invisible fixed inset-0 z-30 w-full bg-black/30 opacity-0 backdrop-blur-sm transition-all dark:bg-white/5",
           isOpen && "visible opacity-100",
         )}
         onClick={() => setIsOpen(false)}>

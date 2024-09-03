@@ -33,12 +33,12 @@ export default function Navbar() {
             فروشگاه ها
           </NavLink>
           <NavLink
-            href={"/experiences"}
+            href={"/experiences/new-experience"}
             className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary">
             ثبت تجربه
           </NavLink>
           <NavLink
-            href={"/stores"}
+            href={"/stores/new-store"}
             className="font-medium [&.active]:text-primary-dark dark:[&.active]:text-primary">
             ثبت فروشگاه
           </NavLink>
