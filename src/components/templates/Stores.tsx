@@ -4,7 +4,7 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 
-const stores = [
+export const fakeStores = [
   "دیجی کالا",
   "الانزا",
   "اتما",
@@ -31,20 +31,20 @@ const stores = [
   "آسرون ",
   "تکنو لایف",
   "کامپیوتر مرکزی",
-  "خانومی",
-  "خانه اوستا",
-  "مو تن رو",
-  "فرش آنلاین",
-  "گالری سکه و طلا نیری",
-  "چشمک",
-  "هایپر ساز",
-  "دیجی استایل",
-  "بانه دات کام",
-  "مدیسه",
-  "زنبیل",
-  "اتما",
-  "بایا",
-  "چاره",
+  // "خانومی",
+  // "خانه اوستا",
+  // "مو تن رو",
+  // "فرش آنلاین",
+  // "گالری سکه و طلا نیری",
+  // "چشمک",
+  // "هایپر ساز",
+  // "دیجی استایل",
+  // "بانه دات کام",
+  // "مدیسه",
+  // "زنبیل",
+  // "اتما",
+  // "بایا",
+  // "چاره",
 ];
 
 export default function Stores() {
@@ -52,7 +52,7 @@ export default function Stores() {
 
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
-      {stores.slice(0, isXLDevice ? undefined : 20).map((store) => (
+      {fakeStores.slice(0, isXLDevice ? undefined : 20).map((store) => (
         <button
           key={store}
           className="hover:text-font-color-white rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-font-color-dark hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary-dark sm:px-5 sm:py-1.5 sm:text-lg">

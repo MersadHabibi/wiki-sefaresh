@@ -79,9 +79,6 @@ export default function NewStoreForm() {
             errors.activityField?.message && "border-2 !border-red-500",
           )}
           {...register("activityField" as any)}
-          //   {/* {props.error?.message ? (
-          //   <p className="mt-1 text-red-500">{props.error.message}</p>
-          // ) : null} */}
           rows={5}
         />
         {errors.activityField?.message ? (
@@ -90,7 +87,7 @@ export default function NewStoreForm() {
           </p>
         ) : null}
       </label>
-      <button className="btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-white dark:bg-primary-dark">
+      <button className="text-font-color-white btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
         ثبت فروشگاه
       </button>
     </form>

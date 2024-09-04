@@ -1,12 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { error } from "console";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useState } from "react";
 import { FieldError, UseFormRegister } from "react-hook-form";
 
 type TProps = {
+  children?: React.ReactNode;
   label?: string;
   type?: string;
   placeholder?: string;
@@ -26,13 +24,19 @@ type TProps = {
   }>;
   value?: string;
   dir?: "ltr" | "rtl";
+  autoComplete?: boolean;
   onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement, Element>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement, Element>) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
 export default function Input(props: TProps) {
   return (
-    <label className={cn("form-control w-full", props.classNames?.container)}>
+    <label
+      htmlFor={props.name}
+      className={cn("form-control w-full", props.classNames?.container)}>
       <div className="label pt-0">
         <span
           className={cn(
@@ -43,7 +47,9 @@ export default function Input(props: TProps) {
         </span>
       </div>
       <input
+        id={props.name}
         dir={props.dir}
+        autoComplete={props.autoComplete ? undefined : "off"}
         name={props.name}
         placeholder={props.placeholder}
         className={cn(
@@ -61,10 +67,14 @@ export default function Input(props: TProps) {
             }
           : undefined)}
         value={props.value}
+        onFocus={props.onFocus}
+        onBlur={props.onBlur}
+        onKeyDown={props.onKeyDown}
       />
       {props.error?.message ? (
         <p className="mt-1 text-sm text-red-500">{props.error.message}</p>
       ) : null}
+      {props.children}
     </label>
   );
 }

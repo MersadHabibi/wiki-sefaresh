@@ -108,7 +108,7 @@ export default function StoresPage() {
                   </div>
                 </div>
               </div>
-              <button className="text-font-color-white btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium dark:bg-primary-dark">
+              <button className="text-font-color-white btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
                 دیدن تجربه ها
               </button>
             </div>

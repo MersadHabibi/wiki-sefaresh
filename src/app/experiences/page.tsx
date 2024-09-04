@@ -1,6 +1,6 @@
 import ExperienceCard from "@/components/modules/ExperienceCard";
 import SortSelectBox from "@/components/modules/SortSelectBox";
-import StoreSelectBox from "@/components/templates/experiences/StoreSelectBox";
+import StoreSelectBox from "./_components/StoreSelectBox";
 import { SearchIcon } from "lucide-react";
 
 export default function ExperiencePage() {
