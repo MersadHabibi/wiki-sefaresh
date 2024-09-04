@@ -77,7 +77,7 @@ export default function MobileSidebarMenu() {
 
   return (
     <>
-      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+      <button className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
         <MenuIcon className="size-7" />
       </button>
       <div

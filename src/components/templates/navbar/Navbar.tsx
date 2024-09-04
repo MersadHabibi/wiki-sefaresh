@@ -21,30 +21,35 @@ export default function Navbar() {
             ویکی سفارش
           </Link>
         </div>
-        <nav className="hidden items-center gap-x-5 sm:gap-x-10 md:flex">
+        <nav className="hidden items-center gap-x-5 sm:gap-x-10 lg:flex">
+          <NavLink
+            href={"/"}
+            className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary-dark">
+            صفحه اصلی
+          </NavLink>
           <NavLink
             href={"/experiences"}
-            className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary">
+            className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary-dark">
             تجربه ها
           </NavLink>
           <NavLink
             href={"/stores"}
-            className="font-medium [&.active]:text-primary-dark dark:[&.active]:text-primary">
+            className="font-medium [&.active]:text-primary-dark dark:[&.active]:text-primary-dark">
             فروشگاه ها
           </NavLink>
           <NavLink
             href={"/experiences/new-experience"}
-            className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary">
+            className="font-medium [&.active]:text-primary-dark  dark:[&.active]:text-primary-dark">
             ثبت تجربه
           </NavLink>
           <NavLink
             href={"/stores/new-store"}
-            className="font-medium [&.active]:text-primary-dark dark:[&.active]:text-primary">
+            className="font-medium [&.active]:text-primary-dark dark:[&.active]:text-primary-dark">
             ثبت فروشگاه
           </NavLink>
           <ChangeThemeBtn />
         </nav>
-        <div className="flex items-center gap-x-4 md:hidden">
+        <div className="flex items-center gap-x-4 lg:hidden">
           <ChangeThemeBtn />
           <MobileSidebarMenu />
         </div>
