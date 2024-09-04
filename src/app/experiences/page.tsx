@@ -1,6 +1,6 @@
 import ExperienceCard from "@/components/modules/ExperienceCard";
-import SearchSelectBox from "@/components/modules/SearchSelectBox";
-import SortSelectBox from "@/components/templates/experiences/SortSelectBox";
+import SortSelectBox from "@/components/modules/SortSelectBox";
+import StoreSelectBox from "@/components/templates/experiences/StoreSelectBox";
 import { SearchIcon } from "lucide-react";
 
 export default function ExperiencePage() {
@@ -18,8 +18,10 @@ export default function ExperiencePage() {
               <SearchIcon className="size-7" />
             </button>
           </label>
-          <SearchSelectBox />
-          <SortSelectBox />
+          <StoreSelectBox />
+          <SortSelectBox
+            options={["مرتبط ترین", "جدیدترین", "مثبت ترین", "منفی ترین"]}
+          />
         </div>
         <div className="w-full">
           <div className="hidden h-16 w-full items-center rounded-lg bg-neutral-200 px-6 dark:bg-neutral-900 md:flex">
