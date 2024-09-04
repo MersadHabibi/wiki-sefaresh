@@ -85,7 +85,7 @@ export default function NewExperienceForm() {
         ) : null}
       </label>
       <button className="text-font-color-white btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
-        ثبت فروشگاه
+        ثبت تجربه
       </button>
     </form>
   );
