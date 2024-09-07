@@ -18,6 +18,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log(new Date());
+
   return (
     <html lang="fa" dir="rtl" className="">
       <body

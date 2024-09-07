@@ -1,0 +1,47 @@
+type Store {
+  id: ID!
+  name: String!
+  website: URL!
+  telegram: String!
+  instagram: String!
+  activityField: String!
+  score: Float!
+  experiences: [Experience]
+}
+
+type Experience {
+  id: String!
+  title: String!
+  description: String!
+  product: String
+  orderDate: DateTime
+  score: PositiveFloat!
+
+  storeId: ID!
+}
+
+input createStoreInput {
+  name: String!
+  website: URL
+  telegram: String
+  instagram: String
+  activityField: String
+}
+
+input createExperienceInput {
+  title: String!
+  description: String!
+  product: String
+  orderDate: DateTime
+  score: PositiveInt!
+  storeId: ID!
+}
+
+type Query {
+  stores: [Store]!
+}
+
+type Mutation {
+  createStore(input: createStoreInput): Store
+  createExperience(input: createExperienceInput): Experience
+}

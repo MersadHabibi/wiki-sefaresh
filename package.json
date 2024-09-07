@@ -9,12 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.2",
+    "@apollo/server": "^4.10.4",
+    "@as-integrations/next": "^3.0.0",
     "@hookform/resolvers": "^3.9.0",
+    "@prisma/client": "^5.19.1",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.40.0",
     "@tinymce/tinymce-react": "^5.1.1",
     "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "graphql": "^16.9.0",
+    "graphql-config": "^5.1.2",
+    "graphql-eslint": "^1.5.2",
+    "graphql-scalars": "^1.23.0",
     "lucide-react": "^0.417.0",
     "moment": "^2.30.1",
     "next": "14.2.7",
@@ -28,6 +39,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@graphql-eslint/eslint-plugin": "^3.20.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -37,6 +49,7 @@
     "postcss": "^8",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "prisma": "^5.19.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
