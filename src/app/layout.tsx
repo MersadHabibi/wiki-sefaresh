@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Footer from "@/components/templates/Footer";
+import ApolloClientProvider from "@/providers/ApolloClientProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -18,8 +19,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  console.log(new Date());
-
   return (
     <html lang="fa" dir="rtl" className="">
       <body
@@ -27,11 +26,13 @@ export default function RootLayout({
           "h-dvh !overflow-y-auto bg-neutral-100 text-sm font-normal text-font-color dark:bg-neutral-950 dark:text-font-color-dark sm:text-base",
           FIranSans.className,
         )}>
-        <ThemeProvider attribute="class">
-          <Navbar />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <ApolloClientProvider>
+          <ThemeProvider attribute="class">
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </ApolloClientProvider>
       </body>
     </html>
   );

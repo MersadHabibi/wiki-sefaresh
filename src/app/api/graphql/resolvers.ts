@@ -1,6 +1,6 @@
-import createExperienceMutation from "@/graphql/createExperienceMutation";
-import createStoreMutation from "@/graphql/createStoreMutation";
-import { TGraphQLContext } from "@/types";
+import createExperienceMutation from "@/graphql/server/createExperienceMutation";
+import createStoreMutation from "@/graphql/server/createStoreMutation";
+import { TExperience, TGraphQLContext, TStore } from "@/types";
 import { PrismaClient } from "@prisma/client";
 import { GraphQLError, GraphQLErrorExtensions } from "graphql";
 
@@ -50,6 +50,24 @@ const resolvers = {
       }
     },
 
+    popularStores: async (_: any, __: any, ctx: TGraphQLContext) => {
+      try {
+        const stores = await ctx.prisma?.store.findMany({});
+
+        const popularStores = stores?.sort((a, b) => {
+          return b.experiencesCount - a.experiencesCount;
+        });
+
+        console.log(popularStores);
+
+        return popularStores?.slice(0, 30);
+      } catch (error) {
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
     experiences: async (_: any, __: any, ctx: TGraphQLContext) => {
       try {
         const experiences = await ctx.prisma?.experience.findMany({});
@@ -92,13 +110,7 @@ const resolvers = {
   },
 
   Store: {
-    experiences: async (
-      store: {
-        id: string;
-      },
-      _: any,
-      ctx: TGraphQLContext,
-    ) => {
+    experiences: async (store: TStore, _: any, ctx: TGraphQLContext) => {
       try {
         const experiences = await ctx.prisma?.experience.findMany({
           where: {
@@ -117,13 +129,7 @@ const resolvers = {
   },
 
   Experience: {
-    Store: async (
-      experience: {
-        storeId: string;
-      },
-      _: any,
-      ctx: TGraphQLContext,
-    ) => {
+    Store: async (experience: TExperience, _: any, ctx: TGraphQLContext) => {
       try {
         const store = await ctx.prisma?.store.findFirst({
           where: {
