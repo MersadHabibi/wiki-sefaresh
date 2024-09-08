@@ -1,16 +1,134 @@
 import createExperienceMutation from "@/graphql/createExperienceMutation";
 import createStoreMutation from "@/graphql/createStoreMutation";
+import { TGraphQLContext } from "@/types";
 import { PrismaClient } from "@prisma/client";
-import { GraphQLError } from "graphql";
+import { GraphQLError, GraphQLErrorExtensions } from "graphql";
 
 const resolvers = {
   Query: {
-    stores: async () => {},
+    stores: async (_: any, __: any, ctx: TGraphQLContext) => {
+      try {
+        const stores = await ctx.prisma?.store.findMany({});
+
+        return stores;
+      } catch (error) {
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
+    store: async (_: any, args: { id: string }, ctx: TGraphQLContext) => {
+      try {
+        const store = await ctx.prisma?.store.findUnique({
+          where: {
+            id: args.id,
+          },
+        });
+
+        if (!store)
+          throw new GraphQLError("فروشگاه پیدا نشد!", {
+            extensions: { code: 404 },
+          });
+
+        return store;
+      } catch (error: any) {
+        if (error?.extensions?.code == "404") throw new GraphQLError(error);
+
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
+    experiences: async (_: any, __: any, ctx: TGraphQLContext) => {
+      try {
+        const experiences = await ctx.prisma?.experience.findMany({});
+
+        return experiences;
+      } catch (error) {
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
+    experience: async (_: any, args: { id: string }, ctx: TGraphQLContext) => {
+      try {
+        const experience = await ctx.prisma?.experience.findUnique({
+          where: {
+            id: args.id,
+          },
+        });
+
+        if (!experience)
+          throw new GraphQLError("تجربه پیدا نشد!", {
+            extensions: { code: 404 },
+          });
+
+        return experience;
+      } catch (error: any) {
+        if (error.extensions.code == "404") throw new GraphQLError(error);
+
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
   },
 
   Mutation: {
     createStore: createStoreMutation,
     createExperience: createExperienceMutation,
+  },
+
+  Store: {
+    experiences: async (
+      store: {
+        id: string;
+      },
+      _: any,
+      ctx: TGraphQLContext,
+    ) => {
+      try {
+        const experiences = await ctx.prisma?.experience.findMany({
+          where: {
+            storeId: store.id,
+          },
+        });
+
+        return experiences;
+      } catch (error) {
+        console.log(error);
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+  },
+
+  Experience: {
+    Store: async (
+      experience: {
+        storeId: string;
+      },
+      _: any,
+      ctx: TGraphQLContext,
+    ) => {
+      try {
+        const store = await ctx.prisma?.store.findFirst({
+          where: {
+            id: experience.storeId,
+          },
+        });
+
+        return store;
+      } catch (error) {
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
   },
 };
 

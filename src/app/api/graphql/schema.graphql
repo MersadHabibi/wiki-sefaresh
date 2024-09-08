@@ -18,6 +18,7 @@ type Experience {
   score: PositiveFloat!
 
   storeId: ID!
+  Store: Store!
 }
 
 input createStoreInput {
@@ -39,6 +40,9 @@ input createExperienceInput {
 
 type Query {
   stores: [Store]!
+  store(id: ID!): Store!
+  experiences: [Experience]!
+  experience(id: ID!): Experience!
 }
 
 type Mutation {

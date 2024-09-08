@@ -35,6 +35,8 @@ const handler = startServerAndCreateNextHandler<NextRequest>(server, {
   context: async (req) => {
     const prisma = new PrismaClient();
 
+    prisma.$connect();
+
     return {
       req,
       prisma,
