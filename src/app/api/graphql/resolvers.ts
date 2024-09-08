@@ -26,6 +26,15 @@ const resolvers = {
           },
         });
 
+        await ctx.prisma?.store.update({
+          where: {
+            id: store?.id,
+          },
+          data: {
+            view: (store?.view ?? 0) + 1,
+          },
+        });
+
         if (!store)
           throw new GraphQLError("فروشگاه پیدا نشد!", {
             extensions: { code: 404 },

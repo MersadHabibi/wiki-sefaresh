@@ -28,6 +28,23 @@ export default async function createExperienceMutation(
       },
     });
 
+    // Update experiencesCount and score
+    const store = await ctx.prisma?.store.findUnique({
+      where: {
+        id: experience?.storeId,
+      },
+    });
+
+    await ctx.prisma?.store.update({
+      where: {
+        id: store?.id,
+      },
+      data: {
+        experiencesCount: (store?.experiencesCount ?? 0) + 1,
+        score: (store?.score ?? 5) + (experience?.score ?? 5) / 2,
+      },
+    });
+
     return experience;
   } catch (error) {
     console.log(error);
