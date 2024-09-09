@@ -35,8 +35,6 @@ export default function ExperiencePage({
 
   if (error) return null;
 
-  if (loading) return null;
-
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:pb-20 lg:pt-10">
       <section className="container">
@@ -46,89 +44,110 @@ export default function ExperiencePage({
             این تجربه تنها نظر شخصی یک فرد است و ممکن است دقیق یا معتبر نباشد.
           </p>
         </div>
-        <div className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
-          <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
-            <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
-              <Link
-                href={`/stores/${data?.experience.storeId}`}
-                className="flex items-center gap-x-3 text-second">
-                <StoreIcon className="hidden size-8 shrink-0 sm:inline-block" />
-                <h3 className="-mb-0.5 line-clamp-1 text-xl font-bold xs:max-w-56 sm:max-w-56 sm:text-2xl md:max-w-72 lg:max-w-52 xl:max-w-96 2xl:max-w-[470px]">
-                  {data?.experience.Store.name}
-                </h3>
-              </Link>
-              <div className="hidden h-6 w-0.5 bg-gray-500 dark:bg-gray-400 sm:inline-block"></div>
-              <p className="-mb-0.5 w-fit text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
-                {timeAgo}
-              </p>
+        {loading ? (
+          <div className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
+            <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
+              <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
+                <div className="light-skeleton h-8 w-36 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:w-52"></div>
+              </div>
+              <div className="flex shrink-0 items-center gap-x-1 sm:gap-x-2">
+                <div className="light-skeleton size-5 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:size-6"></div>
+                <div className="light-skeleton size-5 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:size-6"></div>
+                <div className="light-skeleton size-5 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:size-6"></div>
+                <div className="light-skeleton size-5 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:size-6"></div>
+                <div className="light-skeleton size-5 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:size-6"></div>
+              </div>
             </div>
-            <div className="-mb-1.5 shrink-0">
-              <div className="rating gap-x-1" dir="ltr">
-                {new Array(data?.experience.score).fill("").map((_, index) => (
-                  <div
-                    key={index}
-                    className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                  />
-                ))}
-                {new Array(5 - (data?.experience.score || 0))
-                  .fill("")
-                  .map((_, index) => (
-                    <input
-                      checked={false}
-                      key={index}
-                      className="mask mask-star-2 size-5 sm:size-6"
-                    />
-                  ))}
+            <div className="px-5 py-5 sm:px-8 sm:py-6">
+              <div className="relative">
+                <div className="light-skeleton h-9 w-28 !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800 sm:h-10 sm:w-32"></div>
+              </div>
+              <div className="mt-3 line-clamp-6 text-gray-700 dark:text-gray-300">
+                <div className="light-skeleton mb-3 h-5 w-full !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
+                <div className="light-skeleton mb-3 h-5 w-full !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
+                <div className="light-skeleton mb-3 h-5 w-[80%] !rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
+              </div>
+            </div>
+            <div className="px-5 py-5 sm:px-8 sm:pb-6 sm:pt-6">
+              <div className="flex w-full flex-col justify-between gap-y-4 rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
+                <div className="light-skeleton h-8 w-full !rounded-md bg-neutral-400/20 dark:skeleton dark:bg-neutral-700/30"></div>
+                <div className="light-skeleton h-8 w-full !rounded-md bg-neutral-400/20 dark:skeleton dark:bg-neutral-700/30"></div>
               </div>
             </div>
           </div>
-          <div className="px-5 py-5 sm:px-8 sm:py-6">
-            <div className="relative">
-              <div className="absolute -right-8 bottom-0 top-0 h-full w-6 rounded-l-sm bg-primary sm:w-5"></div>
-              <Link href={`/experiences/${data?.experience.id}`}>
-                <h2 className="line-clamp-1 text-xl font-bold sm:text-2xl">
-                  {data?.experience.title}
-                </h2>
-              </Link>
-            </div>
-            <p className="mt-3 line-clamp-6 text-gray-700 dark:text-gray-300">
-              {data?.experience.body}
-            </p>
-          </div>
-          <div className="px-5 py-5 sm:px-8 sm:pb-6 sm:pt-8">
-            <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
-              <div className="flex w-full items-center justify-between px-2">
-                <p>محصول</p>
-                <p>{data?.experience.product || "مشخص نشده"}</p>
-              </div>
-              <div className="my-5 h-px w-full bg-neutral-400 dark:bg-neutral-700"></div>
-              <div className="flex w-full items-center justify-between px-2">
-                <p>تاریخ سفارش</p>
-                <p>
-                  {data?.experience.orderDate
-                    ? new Date(data?.experience.orderDate).toLocaleDateString(
-                        "fa-IR",
-                      )
-                    : "مشخص نشده"}
+        ) : (
+          <div className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
+            <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
+              <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
+                <Link
+                  href={`/stores/${data?.experience.storeId}`}
+                  className="flex items-center gap-x-3 text-second">
+                  <StoreIcon className="hidden size-8 shrink-0 sm:inline-block" />
+                  <h3 className="-mb-0.5 line-clamp-1 text-xl font-bold xs:max-w-56 sm:max-w-56 sm:text-2xl md:max-w-72 lg:max-w-52 xl:max-w-96 2xl:max-w-[470px]">
+                    {data?.experience.Store.name}
+                  </h3>
+                </Link>
+                <div className="hidden h-6 w-0.5 bg-gray-500 dark:bg-gray-400 sm:inline-block"></div>
+                <p className="-mb-0.5 w-fit text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
+                  {timeAgo}
                 </p>
               </div>
+              <div className="-mb-1.5 shrink-0">
+                <div className="rating gap-x-1" dir="ltr">
+                  {new Array(data?.experience.score)
+                    .fill("")
+                    .map((_, index) => (
+                      <div
+                        key={index}
+                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
+                      />
+                    ))}
+                  {new Array(5 - (data?.experience.score || 0))
+                    .fill("")
+                    .map((_, index) => (
+                      <input
+                        checked={false}
+                        key={index}
+                        className="mask mask-star-2 size-5 sm:size-6"
+                      />
+                    ))}
+                </div>
+              </div>
+            </div>
+            <div className="px-5 py-5 sm:px-8 sm:py-6">
+              <div className="relative">
+                <div className="absolute -right-8 bottom-0 top-0 h-full w-6 rounded-l-sm bg-primary sm:w-5"></div>
+                <Link href={`/experiences/${data?.experience.id}`}>
+                  <h2 className="line-clamp-1 text-xl font-bold sm:text-2xl">
+                    {data?.experience.title}
+                  </h2>
+                </Link>
+              </div>
+              <p className="mt-3 line-clamp-6 text-gray-700 dark:text-gray-300">
+                {data?.experience.body}
+              </p>
+            </div>
+            <div className="px-5 py-5 sm:px-8 sm:pb-6 sm:pt-8">
+              <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
+                <div className="flex w-full items-center justify-between px-2">
+                  <p>محصول</p>
+                  <p>{data?.experience.product || "مشخص نشده"}</p>
+                </div>
+                <div className="my-5 h-px w-full bg-neutral-400 dark:bg-neutral-700"></div>
+                <div className="flex w-full items-center justify-between px-2">
+                  <p>تاریخ سفارش</p>
+                  <p>
+                    {data?.experience.orderDate
+                      ? new Date(data?.experience.orderDate).toLocaleDateString(
+                          "fa-IR",
+                        )
+                      : "مشخص نشده"}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-          {/* <div className="flex items-center gap-x-4 px-5 pb-5 sm:px-8 sm:pb-8">
-            <div className="flex items-center gap-x-2">
-              <button className="flex size-10 items-center justify-center rounded-full border border-green-500 bg-neutral-300 transition-all hover:scale-110 dark:border-green-500/70 dark:bg-neutral-800 [&.active]:bg-green-500 [&.active]:text-font-color-dark">
-                <ThumbsUpIcon className="-mt-0.5 size-6 scale-x-[-1]" />
-              </button>
-              <p className="mt-1 text-lg">12</p>
-            </div>
-            <div className="flex items-center gap-x-2">
-              <button className="flex size-10 items-center justify-center rounded-full border border-red-500 bg-neutral-300 transition-all hover:scale-110 dark:border-red-500/70 dark:bg-neutral-800 [&.active]:bg-red-500 [&.active]:text-font-color-dark">
-                <ThumbsDownIcon className="-mb-0.5 size-6 scale-x-[-1]" />
-              </button>
-              <p className="mt-1 text-lg">2</p>
-            </div>
-          </div> */}
-        </div>
+        )}
       </section>
     </main>
   );

@@ -66,7 +66,7 @@ export default function Stores() {
             .map((_, index) => (
               <div
                 key={index}
-                className="light-skeleton h-9 w-28 rounded-sm bg-neutral-200 dark:skeleton dark:bg-neutral-900 sm:h-10"></div>
+                className="light-skeleton h-9 w-28 !rounded-md bg-neutral-200 dark:skeleton dark:bg-neutral-900 sm:h-10"></div>
             ))
         : data?.popularStores
             .slice(0, isXLDevice ? undefined : 20)

@@ -24,7 +24,7 @@ const config: Config = {
       colors: {
         primary: "#1d4ed8",
         "primary-dark": "#3d80ff",
-        second: "#FF4500",
+        second: "#fc4e0d",
         "font-color": "#111827",
         "font-color-dark": "#ffff",
         red: {
