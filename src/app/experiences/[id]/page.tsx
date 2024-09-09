@@ -1,11 +1,42 @@
+"use client";
+
+import GET_EXPERIENCE_BY_ID from "@/graphql/client/queries/GetExperienceById";
+import { useQuery } from "@apollo/client";
+import { formatDistanceToNow } from "date-fns";
+import { faIR } from "date-fns/locale";
 import {
   CircleAlertIcon,
   StoreIcon,
   ThumbsDownIcon,
   ThumbsUpIcon,
 } from "lucide-react";
+import Link from "next/link";
 
-export default function ExperiencePage() {
+export default function ExperiencePage({
+  params,
+}: {
+  params: {
+    id: string;
+  };
+}) {
+  const { loading, error, data } = useQuery(GET_EXPERIENCE_BY_ID, {
+    variables: { experienceId: params.id },
+  });
+
+  const timeAgo = formatDistanceToNow(
+    new Date(data?.experience.createdAt || new Date()),
+    {
+      addSuffix: true,
+      locale: faIR, // Set locale to Persian
+    },
+  );
+
+  console.log(data?.experience.score);
+
+  if (error) return null;
+
+  if (loading) return null;
+
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:pb-20 lg:pt-10">
       <section className="container">
@@ -18,92 +49,72 @@ export default function ExperiencePage() {
         <div className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
           <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
             <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
-              <div className="flex items-center gap-x-3 text-second">
+              <Link
+                href={`/stores/${data?.experience.storeId}`}
+                className="flex items-center gap-x-3 text-second">
                 <StoreIcon className="hidden size-8 shrink-0 sm:inline-block" />
                 <h3 className="-mb-0.5 line-clamp-1 text-xl font-bold xs:max-w-56 sm:max-w-56 sm:text-2xl md:max-w-72 lg:max-w-52 xl:max-w-96 2xl:max-w-[470px]">
-                  دیجی کالا
+                  {data?.experience.Store.name}
                 </h3>
-              </div>
+              </Link>
               <div className="hidden h-6 w-0.5 bg-gray-500 dark:bg-gray-400 sm:inline-block"></div>
               <p className="-mb-0.5 w-fit text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
-                2 ساعت قبل
+                {timeAgo}
               </p>
             </div>
             <div className="-mb-1.5 shrink-0">
               <div className="rating gap-x-1" dir="ltr">
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                  defaultChecked
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                />
-                <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-                />
+                {new Array(data?.experience.score).fill("").map((_, index) => (
+                  <div
+                    key={index}
+                    className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
+                  />
+                ))}
+                {new Array(5 - (data?.experience.score || 0))
+                  .fill("")
+                  .map((_, index) => (
+                    <input
+                      checked={false}
+                      key={index}
+                      className="mask mask-star-2 size-5 sm:size-6"
+                    />
+                  ))}
               </div>
             </div>
           </div>
           <div className="px-5 py-5 sm:px-8 sm:py-6">
             <div className="relative">
               <div className="absolute -right-8 bottom-0 top-0 h-full w-6 rounded-l-sm bg-primary sm:w-5"></div>
-              <h2 className="line-clamp-1 text-xl font-bold sm:text-2xl">
-                تاخیر سفارش
-              </h2>
+              <Link href={`/experiences/${data?.experience.id}`}>
+                <h2 className="line-clamp-1 text-xl font-bold sm:text-2xl">
+                  {data?.experience.title}
+                </h2>
+              </Link>
             </div>
             <p className="mt-3 line-clamp-6 text-gray-700 dark:text-gray-300">
-              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-              استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
-              در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
-              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-              کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
-              طراحان رایانه . علی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-              بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد
-              گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-              نرم افزارها شناخت بیشتری را برای طراحان رایانه . علی تکنولوژی مورد
-              نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد،
-              کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
-              جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای
-              طراحان رایانه . علی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف
-              بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد
-              گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-              نرم افزارها شناخت بیشتری را برای طراحان رایانه . کاربردهای متنوع
-              با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-              درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد،
-              تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه .
+              {data?.experience.body}
             </p>
           </div>
           <div className="px-5 py-5 sm:px-8 sm:pb-6 sm:pt-8">
             <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
               <div className="flex w-full items-center justify-between px-2">
                 <p>محصول</p>
-                <p>موبایل</p>
+                <p>{data?.experience.product || "مشخص نشده"}</p>
               </div>
               <div className="my-5 h-px w-full bg-neutral-400 dark:bg-neutral-700"></div>
               <div className="flex w-full items-center justify-between px-2">
                 <p>تاریخ سفارش</p>
-                <p>{new Date().toLocaleDateString("fa-IR")}</p>
+                <p>
+                  {data?.experience.orderDate
+                    ? new Date(data?.experience.orderDate).toLocaleDateString(
+                        "fa-IR",
+                      )
+                    : "مشخص نشده"}
+                </p>
               </div>
             </div>
           </div>
-          <div className="flex items-center gap-x-4 px-5 pb-5 sm:px-8 sm:pb-8">
+          {/* <div className="flex items-center gap-x-4 px-5 pb-5 sm:px-8 sm:pb-8">
             <div className="flex items-center gap-x-2">
               <button className="flex size-10 items-center justify-center rounded-full border border-green-500 bg-neutral-300 transition-all hover:scale-110 dark:border-green-500/70 dark:bg-neutral-800 [&.active]:bg-green-500 [&.active]:text-font-color-dark">
                 <ThumbsUpIcon className="-mt-0.5 size-6 scale-x-[-1]" />
@@ -116,7 +127,7 @@ export default function ExperiencePage() {
               </button>
               <p className="mt-1 text-lg">2</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </main>
