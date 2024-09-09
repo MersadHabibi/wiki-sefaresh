@@ -114,7 +114,10 @@ const resolvers = {
     lastExperiences: async (_: any, __: any, ctx: TGraphQLContext) => {
       try {
         const experiences = await ctx.prisma?.experience.findMany({
-          where: {},
+          orderBy: {
+            createdAt: "desc",
+          },
+          take: 4,
         });
 
         const lastExperiences = experiences?.sort((a, b) => {
