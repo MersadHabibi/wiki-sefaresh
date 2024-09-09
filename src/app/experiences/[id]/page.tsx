@@ -94,7 +94,7 @@ export default function ExperiencePage({
               </div>
               <div className="-mb-1.5 shrink-0">
                 <div className="rating gap-x-1" dir="ltr">
-                  {new Array(data?.experience.score)
+                  {new Array(Math.round(data?.experience.score || 0))
                     .fill("")
                     .map((_, index) => (
                       <div
@@ -102,7 +102,7 @@ export default function ExperiencePage({
                         className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
                       />
                     ))}
-                  {new Array(5 - (data?.experience.score || 0))
+                  {new Array(5 - Math.round(data?.experience.score || 0))
                     .fill("")
                     .map((_, index) => (
                       <input

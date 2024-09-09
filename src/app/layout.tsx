@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import ApolloClientProvider from "@/providers/ApolloClientProvider";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class">
             <Navbar />
             {children}
+            <Toaster />
             <Footer />
           </ThemeProvider>
         </ApolloClientProvider>

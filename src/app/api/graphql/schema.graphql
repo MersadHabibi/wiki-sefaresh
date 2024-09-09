@@ -11,8 +11,8 @@ type Store {
   instagram: String
   activityField: String!
   score: Float!
-  view: PositiveInt!
-  experiencesCount: PositiveInt!
+  view: Int!
+  experiencesCount: Int!
   experiences: [Experience]
 }
 

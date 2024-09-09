@@ -55,7 +55,8 @@ export default function StoresList() {
                   {store?.website ? (
                     <Link
                       href={store?.website}
-                      className="text-blue-600 hover:underline dark:text-blue-500">
+                      className="text-blue-600 hover:underline dark:text-blue-500"
+                      target="_blank">
                       لینک
                     </Link>
                   ) : (
@@ -67,13 +68,15 @@ export default function StoresList() {
                   <p>امتیاز</p>
                   <div className="-mb-1.5 shrink-0">
                     <div className="rating gap-x-1" dir="ltr">
-                      {new Array(store?.score).fill("").map((_, index) => (
-                        <div
-                          key={index}
-                          className="mask mask-star-2 size-5 bg-orange-400"
-                        />
-                      ))}
-                      {new Array(5 - (store?.score || 0))
+                      {new Array(Math.round(store?.score || 0))
+                        .fill("")
+                        .map((_, index) => (
+                          <div
+                            key={index}
+                            className="mask mask-star-2 size-5 bg-orange-400"
+                          />
+                        ))}
+                      {new Array(5 - Math.round(store?.score || 0))
                         .fill("")
                         .map((_, index) => (
                           <input
@@ -88,7 +91,7 @@ export default function StoresList() {
               </div>
               <Link
                 href={`/experiences?storeId=${store?.id}`}
-                className="btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
+                className="btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark">
                 دیدن تجربه ها
               </Link>
             </div>

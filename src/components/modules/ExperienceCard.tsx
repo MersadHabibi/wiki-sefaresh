@@ -47,19 +47,23 @@ export default function ExperienceCard({ classNames, experience }: TProps) {
         </div>
         <div className="-mb-1.5 shrink-0">
           <div className="rating gap-x-1" dir="ltr">
-            {new Array(experience.score).fill("").map((_, index) => (
-              <div
-                key={index}
-                className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-              />
-            ))}
-            {new Array(5 - experience.score).fill("").map((_, index) => (
-              <input
-                checked={false}
-                key={index}
-                className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
-              />
-            ))}
+            {new Array(Math.round(experience.score || 0))
+              .fill("")
+              .map((_, index) => (
+                <div
+                  key={index}
+                  className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
+                />
+              ))}
+            {new Array(5 - Math.round(experience.score || 0))
+              .fill("")
+              .map((_, index) => (
+                <input
+                  checked={false}
+                  key={index}
+                  className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
+                />
+              ))}
           </div>
         </div>
       </div>

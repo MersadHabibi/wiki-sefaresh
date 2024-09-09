@@ -10,6 +10,8 @@ export default function StoreSection({ storeId }: { storeId: string }) {
     variables: { storeId },
   });
 
+  console.log(data, error);
+
   if (error) return null;
 
   if (loading)
@@ -50,19 +52,23 @@ export default function StoreSection({ storeId }: { storeId: string }) {
           </h1>
         </div>
         <div className="rating gap-x-1" dir="ltr">
-          {new Array(data?.store.score).fill("").map((_, index) => (
-            <div
-              key={index}
-              className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
-            />
-          ))}
-          {new Array(5 - (data?.store.score || 0)).fill("").map((_, index) => (
-            <input
-              checked={false}
-              key={index}
-              className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
-            />
-          ))}
+          {new Array(Math.round(data?.store.score || 0))
+            .fill("")
+            .map((_, index) => (
+              <div
+                key={index}
+                className="mask mask-star-2 size-5 bg-orange-400 sm:size-6"
+              />
+            ))}
+          {new Array(5 - Math.round(data?.store.score || 0))
+            .fill("")
+            .map((_, index) => (
+              <input
+                checked={false}
+                key={index}
+                className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
+              />
+            ))}
         </div>
       </div>
       <div className="px-5 py-5 sm:px-8 sm:py-8">
@@ -76,7 +82,7 @@ export default function StoreSection({ storeId }: { storeId: string }) {
               <Link
                 href={data.store.website}
                 className="text-primary hover:underline dark:text-primary-dark"
-                passHref>
+                target="_blank">
                 لینک
               </Link>
             ) : (
@@ -87,9 +93,9 @@ export default function StoreSection({ storeId }: { storeId: string }) {
             <p>آدرس تلگرام</p>
             {data?.store.telegram ? (
               <Link
-                href={data.store.telegram}
+                href={`https://t.me/${data.store.telegram}`}
                 className="text-primary hover:underline dark:text-primary-dark"
-                passHref>
+                target="_blank">
                 {data.store.telegram}
               </Link>
             ) : (
@@ -100,9 +106,9 @@ export default function StoreSection({ storeId }: { storeId: string }) {
             <p>آدرس اینستاگرام</p>
             {data?.store.instagram ? (
               <Link
-                href={data.store.instagram}
+                href={`https://instagram.com/${data.store.instagram}`}
                 className="text-primary hover:underline dark:text-primary-dark"
-                passHref>
+                target="_blank">
                 {data.store.instagram}
               </Link>
             ) : (

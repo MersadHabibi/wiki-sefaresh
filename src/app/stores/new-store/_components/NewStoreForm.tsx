@@ -5,6 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { NewStoreFormData, NewStoreSchema } from "./NewStoreFormSchema";
 import { cn } from "@/lib/utils";
+import { useMutation } from "@apollo/client";
+import CREATE_STORE from "@/graphql/client/mutations/CreateStoreMutation";
+import toast from "react-hot-toast";
+import { TError } from "@/types";
+import { useRouter } from "next/navigation";
 
 export default function NewStoreForm() {
   const {
@@ -16,8 +21,26 @@ export default function NewStoreForm() {
     resolver: zodResolver(NewStoreSchema), // Apply the zodResolver
   });
 
+  const [addTodo, { data, loading, error }] = useMutation(CREATE_STORE);
+
+  const router = useRouter();
+
   const onSubmit = async (data: NewStoreFormData) => {
     console.log("SUCCESS", data);
+
+    try {
+      const res = await addTodo({
+        variables: { input: { ...data, website: data.website || undefined } },
+      });
+      console.log(res);
+
+      toast.success("فروشگاه با موفقیت ثبت شد.");
+
+      router.push(`/stores/${res.data?.createStore?.id}`);
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -39,16 +62,18 @@ export default function NewStoreForm() {
         classNames={{
           container: "col-span-6 lg:col-span-2",
         }}
-        name="site"
+        name="website"
         label="وب سایت فروشگاه (اختیاری)"
         // type="url"
         placeholder="https://website.ir"
         register={register}
-        error={errors.site}
+        error={errors.website}
       />
       <Input
+        dir="ltr"
         classNames={{
           container: "col-span-6 md:col-span-3 lg:col-span-2",
+          input: "placeholder:text-end",
         }}
         name="instagram"
         placeholder="آیدی اینستاگرام فروشگاه..."
@@ -57,8 +82,10 @@ export default function NewStoreForm() {
         error={errors.instagram}
       />
       <Input
+        dir="ltr"
         classNames={{
           container: "col-span-6 md:col-span-3 lg:col-span-2",
+          input: "placeholder:text-end",
         }}
         name="telegram"
         placeholder="آیدی تلگرام فروشگاه..."
@@ -87,8 +114,14 @@ export default function NewStoreForm() {
           </p>
         ) : null}
       </label>
-      <button className="text-font-color-white btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
-        ثبت فروشگاه
+      <button
+        disabled={loading}
+        className="disabled:bg-primary-disable btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark">
+        {loading ? (
+          <span className="loading loading-spinner loading-sm text-white"></span>
+        ) : (
+          "ثبت فروشگاه"
+        )}
       </button>
     </form>
   );

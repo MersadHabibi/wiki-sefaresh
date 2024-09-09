@@ -5,7 +5,7 @@ export const NewStoreSchema: ZodType<NewStoreFormData> = z.object({
     .string()
     .min(3, { message: "نام فروشگاه باید بیشتر از ۳ حرف باشد!" })
     .max(25, { message: "نام فروشگاه باید کمتر از ۲۵ حرف باشد!" }),
-  site: z
+  website: z
     .string()
     .url({ message: "لینک معتبر نیست!" })
     .optional()
@@ -20,7 +20,7 @@ export const NewStoreSchema: ZodType<NewStoreFormData> = z.object({
 
 export type NewStoreFormData = {
   name: string;
-  site?: string;
+  website?: string;
   instagram?: string;
   telegram?: string;
   activityField: string;

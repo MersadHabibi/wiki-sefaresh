@@ -30,19 +30,30 @@ export default function StoreExperiences({ storeId }: { storeId: string }) {
         <div className="mx-auto h-1 w-40 rounded-full bg-primary dark:bg-primary-dark lg:mx-0"></div>
       </div>
       <div className="w-full space-y-4">
-        {loading
-          ? new Array(4)
-              .fill("")
-              .map((_, index) => <ExperienceCardSkeleton key={index} />)
-          : data?.lastExperiencesByStore.map((experience) => (
-              <ExperienceCard key={experience?.id} experience={experience} />
-            ))}
-        <Link
-          href={`/experiences?storeId=${storeId}`}
-          className="btn btn-primary w-full gap-x-2 border-none bg-primary font-medium text-font-color-dark xs:text-base sm:gap-x-4">
-          <span>دیدن همه تجربه های این فروشگاه</span>
-          <ArrowLeftIcon className="size-5 sm:size-6" />
-        </Link>
+        {data?.lastExperiencesByStore.length ? (
+          <>
+            {loading
+              ? new Array(4)
+                  .fill("")
+                  .map((_, index) => <ExperienceCardSkeleton key={index} />)
+              : data?.lastExperiencesByStore.map((experience) => (
+                  <ExperienceCard
+                    key={experience?.id}
+                    experience={experience}
+                  />
+                ))}
+            <Link
+              href={`/experiences?storeId=${storeId}`}
+              className="btn btn-primary w-full gap-x-2 border-none bg-primary font-medium text-font-color-dark xs:text-base sm:gap-x-4">
+              <span>دیدن همه تجربه های این فروشگاه</span>
+              <ArrowLeftIcon className="size-5 sm:size-6" />
+            </Link>
+          </>
+        ) : (
+          <p className="pt-8 text-center text-base font-medium sm:text-lg">
+            تجربه ای برای این فروشگاه ثبت نشده است.
+          </p>
+        )}
       </div>
     </section>
   );

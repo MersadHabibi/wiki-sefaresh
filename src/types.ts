@@ -29,3 +29,8 @@ export type TExperience = {
   storeId: string;
   createdAt: Date;
 };
+
+export type TError = {
+  message: string;
+  code: number;
+};
