@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import ExperienceCard from "../modules/ExperienceCard";
+import ExperienceCardSkeleton from "../modules/ExperienceCardSkeleton";
 
 export default function LastExperiences() {
   const { loading, error, data } = useQuery(GET_LAST_EXPERIENCES);
@@ -28,35 +29,9 @@ export default function LastExperiences() {
       </div>
       <div className="w-full space-y-4">
         {loading
-          ? new Array(4).fill("").map((_, index) => (
-              <div
-                key={index}
-                className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
-                <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
-                  <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
-                    <div className="light-skeleton h-8 w-36 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                  </div>
-                  <div className="flex items-center gap-x-2">
-                    <div className="light-skeleton size-6 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton size-6 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton size-6 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton size-6 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton size-6 rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                  </div>
-                </div>
-                <div className="px-5 py-5 sm:px-8 sm:py-6">
-                  <div className="relative">
-                    <div className="light-skeleton h-10 w-32 rounded-lg bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                  </div>
-                  <div className="mt-5 line-clamp-6 text-gray-700 dark:text-gray-300">
-                    <div className="light-skeleton mb-3 h-5 w-full rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton mb-3 h-5 w-full rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton mb-3 h-5 w-full rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                    <div className="light-skeleton mb-3 h-5 w-[80%] rounded-md bg-neutral-300 dark:skeleton dark:bg-neutral-800"></div>
-                  </div>
-                </div>
-              </div>
-            ))
+          ? new Array(4)
+              .fill("")
+              .map((_, index) => <ExperienceCardSkeleton key={index} />)
           : data?.lastExperiences.map((experience) => (
               <ExperienceCard key={experience?.id} experience={experience} />
             ))}

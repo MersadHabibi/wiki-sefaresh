@@ -2,6 +2,7 @@ import ExperienceCard from "@/components/modules/ExperienceCard";
 import SortSelectBox from "@/components/modules/SortSelectBox";
 import StoreSelectBox from "./_components/StoreSelectBox";
 import { SearchIcon } from "lucide-react";
+import ExperiencesList from "./_components/ExperiencesList";
 
 export default function ExperiencePage() {
   return (
@@ -42,12 +43,7 @@ export default function ExperiencePage() {
             </div>
           </div>
 
-          <div className="space-y-4 md:pt-5 2xl:pt-7">
-            {/* <ExperienceCard /> */}
-            {/* <ExperienceCard /> */}
-            {/* <ExperienceCard /> */}
-            {/* <ExperienceCard /> */}
-          </div>
+         <ExperiencesList />
         </div>
       </section>
     </main>
