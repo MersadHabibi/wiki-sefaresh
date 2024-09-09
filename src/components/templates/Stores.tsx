@@ -2,6 +2,7 @@
 
 import GET_All_STORES from "@/graphql/client/queries/GetAllStoresQuery";
 import GET_POPULAR_STORES from "@/graphql/client/queries/GetPopularStores";
+import { TStore } from "@/types";
 import { useQuery } from "@apollo/client";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
@@ -55,7 +56,7 @@ export default function Stores() {
 
   const { loading, error, data } = useQuery(GET_POPULAR_STORES);
 
-  console.log(loading, data);
+  if (error) return null;
 
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
@@ -69,12 +70,12 @@ export default function Stores() {
             ))
         : data?.popularStores
             .slice(0, isXLDevice ? undefined : 20)
-            .map((store: any) => (
+            .map((store: { id: string; name: string } | null) => (
               <Link
-                href={"#"}
-                key={store.id}
+                href={`/stores/${store?.id}`}
+                key={store?.id}
                 className="flex h-9 items-center justify-center rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-font-color-dark hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary sm:h-10 sm:px-5 sm:py-1.5 sm:text-lg">
-                {store.name}
+                {store?.name}
               </Link>
             ))}
       <Link

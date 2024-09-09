@@ -1,11 +1,11 @@
+import Footer from "@/components/templates/Footer";
 import Navbar from "@/components/templates/navbar/Navbar";
 import { FIranSans } from "@/config/fonts";
 import { cn } from "@/lib/utils";
+import ApolloClientProvider from "@/providers/ApolloClientProvider";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import Footer from "@/components/templates/Footer";
-import ApolloClientProvider from "@/providers/ApolloClientProvider";
 
 export const metadata: Metadata = {
   title: {

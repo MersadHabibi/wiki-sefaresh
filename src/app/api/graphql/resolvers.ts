@@ -68,8 +68,6 @@ const resolvers = {
           return b.experiencesCount - a.experiencesCount;
         });
 
-        console.log(popularStores);
-
         return popularStores?.slice(0, 30);
       } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
@@ -150,7 +148,6 @@ const resolvers = {
 
         return experiences;
       } catch (error) {
-        console.log(error);
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },
         });

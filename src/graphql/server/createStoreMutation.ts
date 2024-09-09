@@ -29,7 +29,6 @@ export default async function createStoreMutation(
 
     return store;
   } catch (error) {
-    console.log(error);
     throw new GraphQLError(
       "ساخت فروشگاه با مشکل مواجه شد! لطفا بعدا امتحان کنید",
       { extensions: { code: 500 } },

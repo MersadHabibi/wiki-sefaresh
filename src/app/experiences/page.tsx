@@ -43,10 +43,10 @@ export default function ExperiencePage() {
           </div>
 
           <div className="space-y-4 md:pt-5 2xl:pt-7">
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
-            <ExperienceCard />
+            {/* <ExperienceCard /> */}
+            {/* <ExperienceCard /> */}
+            {/* <ExperienceCard /> */}
+            {/* <ExperienceCard /> */}
           </div>
         </div>
       </section>

@@ -35,7 +35,6 @@ export default function StoreNameInput(props: TProps) {
   };
 
   const onKeyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log("work");
     if (event.key === "Enter") {
       event.preventDefault();
 
@@ -62,7 +61,6 @@ export default function StoreNameInput(props: TProps) {
     }
   };
 
-  console.log(storeName);
 
   return (
     <Input
@@ -74,7 +72,6 @@ export default function StoreNameInput(props: TProps) {
       placeholder="نام فروشگاه..."
       value={storeName}
       onInput={(event) => {
-        console.log(event);
 
         setStoreName(event.currentTarget.value);
         filterAutoCompleteOptions(event.currentTarget.value);
@@ -99,7 +96,6 @@ export default function StoreNameInput(props: TProps) {
                 selectedIndex === index && "bg-neutral-400/40",
               )}
               onClick={() => {
-                console.log("event");
                 setStoreName(store);
                 filterAutoCompleteOptions(store);
                 setSelectedIndex(0);

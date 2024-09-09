@@ -47,7 +47,6 @@ export default async function createExperienceMutation(
 
     return experience;
   } catch (error) {
-    console.log(error);
     throw new GraphQLError(
       "ثبت تجربه با مشکل مواجه شد! لطفا بعدا امتحان کنید",
       { extensions: { code: 500 } },

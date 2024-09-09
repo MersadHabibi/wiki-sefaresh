@@ -1,15 +1,18 @@
 "use client";
 
 import { FMorabba } from "@/config/fonts";
+import GET_LAST_EXPERIENCES from "@/graphql/client/queries/GetLastExperiences";
 import { cn } from "@/lib/utils";
-import { ArrowLeftIcon, StoreIcon } from "lucide-react";
+import { useQuery } from "@apollo/client";
+import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import ExperienceCard from "../modules/ExperienceCard";
-import { useQuery } from "@apollo/client";
-import GET_LAST_EXPERIENCES from "@/graphql/client/queries/GetLastExperiences";
 
 export default function LastExperiences() {
   const { loading, error, data } = useQuery(GET_LAST_EXPERIENCES);
+
+  // TODO: create 500 and 404 page
+  if (error) return null;
 
   return (
     <section className="container flex flex-col gap-y-7 pb-32 text-center sm:gap-y-10 lg:flex-row lg:text-start">
