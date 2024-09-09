@@ -41,7 +41,7 @@ export default async function createExperienceMutation(
       },
       data: {
         experiencesCount: (store?.experiencesCount ?? 0) + 1,
-        score: (store?.score ?? 5) + (experience?.score ?? 5) / 2,
+        score: ((store?.score ?? 5) + (experience?.score ?? 5)) / 2,
       },
     });
 

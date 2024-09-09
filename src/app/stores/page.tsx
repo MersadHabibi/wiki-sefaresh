@@ -1,8 +1,10 @@
 import SortSelectBox from "@/components/modules/SortSelectBox";
 import { SearchIcon, StoreIcon } from "lucide-react";
 import Link from "next/link";
+import StoresList from "./_components/StoresList";
 
 export default function StoresPage() {
+  
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:py-20">
       <section className="container">
@@ -45,75 +47,7 @@ export default function StoresPage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 grid-rows-1 gap-5 pt-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-7 2xl:pt-7">
-          {new Array(12).fill(" ").map((_, index) => (
-            <div
-              key={index}
-              className="rounded-lg bg-neutral-200 p-4 dark:bg-neutral-900">
-              <div className="flex items-center gap-x-4 px-2 pb-5 pt-1 text-xl font-bold text-second">
-                <StoreIcon className="size-8" />
-                <h3>دیجی کالا</h3>
-              </div>
-              {/* <div className="mt-4 h-px w-full rounded-full bg-neutral-400 dark:bg-neutral-800"></div> */}
-              <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
-                <div className="flex w-full items-center justify-center px-2 font-medium">
-                  <p>فروشگاه لباس</p>
-                </div>
-                <div className="my-5 !h-px w-full bg-neutral-400 dark:bg-neutral-700"></div>
-                <div className="flex w-full items-center justify-between px-2">
-                  <p>تعداد تجربه ها</p>
-                  <p>۳۵</p>
-                </div>
-                <div className="my-5 !h-[0.5px] w-full bg-neutral-400 dark:bg-neutral-700"></div>
-                <div className="flex w-full items-center justify-between px-2">
-                  <p>سایت</p>
-                  <Link
-                    href={"#"}
-                    className="text-blue-600 hover:underline dark:text-blue-500">
-                    لینک
-                  </Link>
-                </div>
-                <div className="my-5 !h-[0.5px] w-full bg-neutral-400 dark:bg-neutral-700"></div>
-                <div className="flex w-full items-center justify-between px-2">
-                  <p>امتیاز</p>
-                  <div className="-mb-1.5 shrink-0">
-                    <div className="rating gap-x-1" dir="ltr">
-                      <input
-                        type="radio"
-                        name="rating-2"
-                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-5"
-                      />
-                      <input
-                        type="radio"
-                        name="rating-2"
-                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-5"
-                        defaultChecked
-                      />
-                      <input
-                        type="radio"
-                        name="rating-2"
-                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-5"
-                      />
-                      <input
-                        type="radio"
-                        name="rating-2"
-                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-5"
-                      />
-                      <input
-                        type="radio"
-                        name="rating-2"
-                        className="mask mask-star-2 size-5 bg-orange-400 sm:size-5"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button className="text-font-color-white btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark dark:bg-primary-dark">
-                دیدن تجربه ها
-              </button>
-            </div>
-          ))}
-        </div>
+        <StoresList />
       </section>
     </main>
   );

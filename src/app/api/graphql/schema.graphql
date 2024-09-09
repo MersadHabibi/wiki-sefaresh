@@ -1,4 +1,3 @@
-
 scalar DateTime
 scalar PositiveFloat
 scalar PositiveInt
@@ -7,9 +6,9 @@ scalar URL
 type Store {
   id: ID!
   name: String!
-  website: URL!
-  telegram: String!
-  instagram: String!
+  website: URL
+  telegram: String
+  instagram: String
   activityField: String!
   score: Float!
   view: PositiveInt!

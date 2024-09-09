@@ -14,7 +14,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  */
 const documents = {
     "\n  query Experiences {\n    experiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperiencesDocument,
-    "\n  query Stores {\n    stores {\n      id\n      name\n    }\n  }\n": types.StoresDocument,
+    "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n": types.AllStoresDocument,
     "\n  query ExperienceById($experienceId: ID!) {\n    experience(id: $experienceId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      product\n      orderDate\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperienceByIdDocument,
     "\n  query LastExperiences {\n    lastExperiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesDocument,
     "\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n": types.PopularStoresDocument,
@@ -41,7 +41,7 @@ export function gql(source: "\n  query Experiences {\n    experiences {\n      i
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query Stores {\n    stores {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query Stores {\n    stores {\n      id\n      name\n    }\n  }\n"];
+export function gql(source: "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n"): (typeof documents)["\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

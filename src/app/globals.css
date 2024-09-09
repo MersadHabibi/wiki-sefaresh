@@ -13,9 +13,6 @@
   }
 
   .skeleton {
-    border-radius: var(--rounded-box, 1rem);
-    --tw-bg-opacity: 1;
-
     will-change: background-position;
     animation: skeleton 1.8s ease-in-out infinite;
     background-image: linear-gradient(
@@ -32,9 +29,6 @@
   }
 
   .light-skeleton {
-    border-radius: var(--rounded-box, 1rem);
-    --tw-bg-opacity: 1;
-
     will-change: background-position;
     animation: skeleton 1.8s ease-in-out infinite;
     background-image: linear-gradient(
