@@ -41,7 +41,7 @@ export default function LandingHeader() {
           </Link>
           <Link
             href={"/experiences/new-experience"}
-            className="btn h-12 w-full shrink border-none bg-primary text-base text-font-color-dark transition-all hover:bg-primary hover:brightness-75 dark:bg-primary-dark xl:text-lg">
+            className="btn btn-primary h-12 w-full shrink border-none bg-primary text-base text-font-color-dark transition-all xl:text-lg">
             <CirclePlusIcon className="size-5 xl:size-6" />
             <span>ثبت تجربه</span>
           </Link>

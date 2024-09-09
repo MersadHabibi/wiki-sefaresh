@@ -14,16 +14,17 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
-  DateTime: { input: any; output: any; }
-  PositiveFloat: { input: any; output: any; }
-  PositiveInt: { input: any; output: any; }
-  URL: { input: any; output: any; }
+  DateTime: { input: Date; output: Date; }
+  PositiveFloat: { input: number; output: number; }
+  PositiveInt: { input: number; output: number; }
+  URL: { input: string; output: string; }
 };
 
 export type Experience = {
   __typename?: 'Experience';
   Store: Store;
-  description: Scalars['String']['output'];
+  body: Scalars['String']['output'];
+  createdAt: Scalars['DateTime']['output'];
   id: Scalars['String']['output'];
   orderDate?: Maybe<Scalars['DateTime']['output']>;
   product?: Maybe<Scalars['String']['output']>;
@@ -52,6 +53,7 @@ export type Query = {
   __typename?: 'Query';
   experience: Experience;
   experiences: Array<Maybe<Experience>>;
+  lastExperiences: Array<Maybe<Experience>>;
   popularStores: Array<Maybe<Store>>;
   store: Store;
   stores: Array<Maybe<Store>>;
@@ -82,7 +84,7 @@ export type Store = {
 };
 
 export type CreateExperienceInput = {
-  description: Scalars['String']['input'];
+  body: Scalars['String']['input'];
   orderDate?: InputMaybe<Scalars['DateTime']['input']>;
   product?: InputMaybe<Scalars['String']['input']>;
   score: Scalars['PositiveInt']['input'];
@@ -103,6 +105,11 @@ export type StoresQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type StoresQuery = { __typename?: 'Query', stores: Array<{ __typename?: 'Store', id: string, name: string } | null> };
 
+export type LastExperiencesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type LastExperiencesQuery = { __typename?: 'Query', lastExperiences: Array<{ __typename?: 'Experience', id: string, title: string, body: string, createdAt: Date, score: number, storeId: string, Store: { __typename?: 'Store', id: string, name: string } } | null> };
+
 export type PopularStoresQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -110,4 +117,5 @@ export type PopularStoresQuery = { __typename?: 'Query', popularStores: Array<{ 
 
 
 export const StoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Stores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"stores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<StoresQuery, StoresQueryVariables>;
+export const LastExperiencesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"LastExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"lastExperiences"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"score"}},{"kind":"Field","name":{"kind":"Name","value":"storeId"}},{"kind":"Field","name":{"kind":"Name","value":"Store"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<LastExperiencesQuery, LastExperiencesQueryVariables>;
 export const PopularStoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PopularStores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"popularStores"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<PopularStoresQuery, PopularStoresQueryVariables>;

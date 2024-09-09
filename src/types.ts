@@ -17,16 +17,15 @@ export type TStore = {
   experiencesCount: number;
   view: number;
   score: number;
-  experiences: TExperience[];
 };
 
 export type TExperience = {
   id: string;
   title: string;
-  description: string;
+  body: string;
   score: number;
   product: string;
   orderDate: Date;
   storeId: string;
-  Store: TStore;
+  createdAt: Date;
 };

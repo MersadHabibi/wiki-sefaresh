@@ -4,12 +4,20 @@ import {
   ApolloServerPluginLandingPageProductionDefault,
 } from "@apollo/server/plugin/landingPage/default";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
+import { PrismaClient } from "@prisma/client";
+import { readFileSync } from "fs";
+import {
+  DateTimeResolver,
+  DateTimeTypeDefinition,
+  PositiveFloatResolver,
+  PositiveFloatTypeDefinition,
+  PositiveIntResolver,
+  PositiveIntTypeDefinition,
+  URLResolver,
+  URLTypeDefinition,
+} from "graphql-scalars";
 import { NextRequest } from "next/server";
 import resolvers from "./resolvers";
-import { typeDefs as scalarTypeDefs } from "graphql-scalars";
-import { PrismaClient } from "@prisma/client";
-import { TGraphQLContext } from "@/types";
-import { readFileSync } from "fs";
 
 const typeDefs = readFileSync("./src/app/api/graphql/schema.graphql", "utf8");
 
@@ -26,8 +34,20 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const server = new ApolloServer({
-  typeDefs: [...scalarTypeDefs, typeDefs],
-  resolvers,
+  typeDefs: [
+    typeDefs,
+    DateTimeTypeDefinition,
+    PositiveIntTypeDefinition,
+    PositiveFloatTypeDefinition,
+    URLTypeDefinition,
+  ],
+  resolvers: {
+    ...resolvers,
+    // DateTimeResolver,
+    // PositiveFloatResolver,
+    // PositiveIntResolver,
+    // URLResolver,
+  },
   plugins,
 });
 

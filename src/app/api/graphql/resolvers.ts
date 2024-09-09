@@ -1,10 +1,20 @@
 import createExperienceMutation from "@/graphql/server/createExperienceMutation";
 import createStoreMutation from "@/graphql/server/createStoreMutation";
 import { TExperience, TGraphQLContext, TStore } from "@/types";
-import { PrismaClient } from "@prisma/client";
-import { GraphQLError, GraphQLErrorExtensions } from "graphql";
+import { GraphQLError } from "graphql";
+import {
+  DateTimeResolver,
+  PositiveFloatResolver,
+  PositiveIntResolver,
+  URLResolver,
+} from "graphql-scalars";
 
 const resolvers = {
+  DateTime: DateTimeResolver,
+  PositiveFloat: PositiveFloatResolver,
+  PositiveInt: PositiveIntResolver,
+  URL: URLResolver,
+
   Query: {
     stores: async (_: any, __: any, ctx: TGraphQLContext) => {
       try {
@@ -97,6 +107,26 @@ const resolvers = {
       } catch (error: any) {
         if (error.extensions.code == "404") throw new GraphQLError(error);
 
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
+    lastExperiences: async (_: any, __: any, ctx: TGraphQLContext) => {
+      try {
+        const experiences = await ctx.prisma?.experience.findMany({
+          where: {},
+        });
+
+        const lastExperiences = experiences?.sort((a, b) => {
+          return (
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+        });
+
+        return lastExperiences?.slice(0, 4);
+      } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },
         });

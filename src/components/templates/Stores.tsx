@@ -60,12 +60,12 @@ export default function Stores() {
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
       {loading
-        ? new Array(isXLDevice ? 25 : 17)
+        ? new Array(isXLDevice ? 15 : 10)
             .fill("")
-            .map((_) => (
+            .map((_, index) => (
               <div
-                key={_ + Math.random()}
-                className="skeleton h-10 w-28 rounded-md bg-neutral-200 dark:bg-neutral-900"></div>
+                key={index}
+                className="light-skeleton h-9 w-28 rounded-sm bg-neutral-200 dark:skeleton dark:bg-neutral-900 sm:h-10"></div>
             ))
         : data?.popularStores
             .slice(0, isXLDevice ? undefined : 20)
@@ -73,13 +73,13 @@ export default function Stores() {
               <Link
                 href={"#"}
                 key={store.id}
-                className="hover:text-font-color-white h-fit rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-font-color-dark hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary sm:px-5 sm:py-1.5 sm:text-lg">
+                className="flex h-9 items-center justify-center rounded-md bg-neutral-200 px-4 py-1 font-medium transition-all hover:bg-primary hover:text-font-color-dark hover:!shadow-inner hover:shadow-black hover:drop-shadow-none dark:bg-neutral-900 dark:hover:bg-primary sm:h-10 sm:px-5 sm:py-1.5 sm:text-lg">
                 {store.name}
               </Link>
             ))}
       <Link
         href={"/stores"}
-        className="text-font-color-white btn flex h-fit min-h-0 items-center gap-x-2 rounded-md bg-primary px-5 py-1.5 font-medium text-font-color-dark shadow-first shadow-black/30 transition-all dark:bg-primary sm:text-lg">
+        className="btn btn-primary flex h-9 min-h-0 items-center gap-x-2 rounded-md border-none bg-primary px-5 py-1.5 font-medium text-font-color-dark shadow-first shadow-black/30 transition-all sm:h-10 sm:text-lg">
         <span>دیدن همه فروشگاه ها</span>
         <ArrowLeftIcon className="size-5 sm:size-6" />
       </Link>

@@ -5,7 +5,7 @@ import { TGraphQLContext } from "@/types";
 
 type createExperienceInput = {
   title: string;
-  description: string;
+  body: string;
   product: string;
   orderDate: Date;
   score: number;

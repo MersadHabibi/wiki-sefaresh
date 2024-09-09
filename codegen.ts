@@ -8,6 +8,14 @@ const config: CodegenConfig = {
     "./src/__generated__/": {
       preset: "client",
       plugins: [],
+      config: {
+        scalars: {
+          DateTime: "Date",
+          PositiveInt: "number",
+          URL: "string",
+          PositiveFloat: "number",
+        },
+      },
       presetConfig: {
         gqlTagName: "gql",
       },
