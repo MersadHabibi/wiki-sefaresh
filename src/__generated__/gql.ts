@@ -17,7 +17,9 @@ const documents = {
     "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n": types.AllStoresDocument,
     "\n  query ExperienceById($experienceId: ID!) {\n    experience(id: $experienceId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      product\n      orderDate\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperienceByIdDocument,
     "\n  query LastExperiences {\n    lastExperiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesDocument,
+    "\n  query LastExperiencesByStore($storeId: ID!) {\n    lastExperiencesByStore(id: $storeId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesByStoreDocument,
     "\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n": types.PopularStoresDocument,
+    "\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n": types.StoreByIdDocument,
 };
 
 /**
@@ -53,7 +55,15 @@ export function gql(source: "\n  query LastExperiences {\n    lastExperiences {\
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function gql(source: "\n  query LastExperiencesByStore($storeId: ID!) {\n    lastExperiencesByStore(id: $storeId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query LastExperiencesByStore($storeId: ID!) {\n    lastExperiencesByStore(id: $storeId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function gql(source: "\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n"): (typeof documents)["\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

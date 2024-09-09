@@ -49,10 +49,11 @@ input createExperienceInput {
 type Query {
   stores: [Store]!
   store(id: ID!): Store!
+  popularStores: [Store]!
   experiences: [Experience]!
   experience(id: ID!): Experience!
-  popularStores: [Store]!
   lastExperiences: [Experience]!
+  lastExperiencesByStore(id: ID!): [Experience]!
 }
 
 type Mutation {

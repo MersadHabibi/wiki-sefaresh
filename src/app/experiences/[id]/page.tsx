@@ -108,7 +108,7 @@ export default function ExperiencePage({
                       <input
                         checked={false}
                         key={index}
-                        className="mask mask-star-2 size-5 sm:size-6"
+                        className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
                       />
                     ))}
                 </div>
@@ -127,7 +127,7 @@ export default function ExperiencePage({
                 {data?.experience.body}
               </p>
             </div>
-            <div className="px-5 py-5 sm:px-8 sm:pb-6 sm:pt-8">
+            <div className="px-5 py-5 sm:px-8 sm:py-8">
               <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
                 <div className="flex w-full items-center justify-between px-2">
                   <p>محصول</p>

@@ -120,13 +120,33 @@ const resolvers = {
           take: 4,
         });
 
-        const lastExperiences = experiences?.sort((a, b) => {
-          return (
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-          );
+        return experiences;
+      } catch (error) {
+        throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
+          extensions: { code: 500 },
+        });
+      }
+    },
+
+    lastExperiencesByStore: async (
+      _: any,
+      args: {
+        id: string;
+      },
+      ctx: TGraphQLContext,
+    ) => {
+      try {
+        const experiences = await ctx.prisma?.experience.findMany({
+          where: {
+            storeId: args.id,
+          },
+          orderBy: {
+            createdAt: "desc",
+          },
+          take: 4,
         });
 
-        return lastExperiences?.slice(0, 4);
+        return experiences;
       } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },

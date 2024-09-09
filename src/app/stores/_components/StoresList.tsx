@@ -33,10 +33,12 @@ export default function StoresList() {
             <div
               key={store?.id}
               className="rounded-lg bg-neutral-200 p-4 dark:bg-neutral-900">
-              <div className="flex items-center gap-x-4 px-2 pb-5 pt-1 text-xl font-bold text-second">
+              <Link
+                href={`/stores/${store?.id}`}
+                className="flex items-center gap-x-4 px-2 pb-5 pt-1 text-xl font-bold text-second">
                 <StoreIcon className="size-8" />
                 <h3>{store?.name}</h3>
-              </div>
+              </Link>
               {/* <div className="mt-4 h-px w-full rounded-full bg-neutral-400 dark:bg-neutral-800"></div> */}
               <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
                 <div className="flex w-full items-center justify-center px-2 font-medium">
@@ -77,7 +79,7 @@ export default function StoresList() {
                           <input
                             checked={false}
                             key={index}
-                            className="mask mask-star-2 size-5"
+                            className="mask mask-star-2 size-5 dark:bg-neutral-600"
                           />
                         ))}
                     </div>

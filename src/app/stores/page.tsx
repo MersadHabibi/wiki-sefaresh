@@ -6,7 +6,7 @@ import StoresList from "./_components/StoresList";
 export default function StoresPage() {
   
   return (
-    <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:py-20">
+    <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950">
       <section className="container">
         <div className="grid grid-cols-1 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-x-7">
           <div className="w-full shrink-0">

@@ -6,7 +6,7 @@ import ExperiencesList from "./_components/ExperiencesList";
 
 export default function ExperiencePage() {
   return (
-    <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:py-20">
+    <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950">
       <section className="container flex flex-col gap-5 lg:flex-row 2xl:gap-x-7">
         <div className="shrink-0">
           <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900 lg:w-80 2xl:w-96">
@@ -43,7 +43,7 @@ export default function ExperiencePage() {
             </div>
           </div>
 
-         <ExperiencesList />
+          <ExperiencesList />
         </div>
       </section>
     </main>
