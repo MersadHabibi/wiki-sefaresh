@@ -13,7 +13,7 @@ export default function NewExperiencePage() {
             اگر فروشگاه مورد نظر موجود نبود در{" "}
             <Link
               className="text-blue-600 hover:underline dark:text-blue-700"
-              href={"/stores"}>
+              href={"/stores/new-store"}>
               این صفحه
             </Link>{" "}
             ثبت کنید.

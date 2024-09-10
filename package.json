@@ -30,6 +30,7 @@
     "graphql-eslint": "^1.5.2",
     "graphql-scalars": "^1.23.0",
     "lucide-react": "^0.417.0",
+    "moment-jalaali": "^0.10.1",
     "mongodb": "^6.8.1",
     "next": "14.2.7",
     "next-themes": "^0.3.0",

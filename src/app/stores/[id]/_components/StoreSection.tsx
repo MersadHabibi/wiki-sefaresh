@@ -10,8 +10,6 @@ export default function StoreSection({ storeId }: { storeId: string }) {
     variables: { storeId },
   });
 
-  console.log(data, error);
-
   if (error) return null;
 
   if (loading)

@@ -21,7 +21,7 @@ export default function NewStoreForm() {
     resolver: zodResolver(NewStoreSchema), // Apply the zodResolver
   });
 
-  const [addTodo, { data, loading, error }] = useMutation(CREATE_STORE);
+  const [createStore, { data, loading, error }] = useMutation(CREATE_STORE);
 
   const router = useRouter();
 
@@ -29,16 +29,14 @@ export default function NewStoreForm() {
     console.log("SUCCESS", data);
 
     try {
-      const res = await addTodo({
+      const res = await createStore({
         variables: { input: { ...data, website: data.website || undefined } },
       });
-      console.log(res);
 
       toast.success("فروشگاه با موفقیت ثبت شد.");
 
       router.push(`/stores/${res.data?.createStore?.id}`);
     } catch (error: any) {
-      console.log(error);
       toast.error(error.message);
     }
   };
@@ -116,7 +114,7 @@ export default function NewStoreForm() {
       </label>
       <button
         disabled={loading}
-        className="disabled:bg-primary-disable btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark">
+        className="btn btn-primary col-span-6 h-12 w-full border-none bg-primary text-base font-medium text-font-color-dark disabled:bg-primary-disable">
         {loading ? (
           <span className="loading loading-spinner loading-sm text-white"></span>
         ) : (

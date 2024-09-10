@@ -2,6 +2,7 @@ import { z, ZodType } from "zod";
 
 export const NewExperienceSchema: ZodType<NewExperienceFormData> = z.object({
   storeName: z.string(),
+  storeId: z.string(),
   product: z.string().optional(),
   orderDate: z
     .string()
@@ -23,6 +24,7 @@ export const NewExperienceSchema: ZodType<NewExperienceFormData> = z.object({
 
 export type NewExperienceFormData = {
   storeName: string;
+  storeId: string;
   product?: string;
   orderDate?: string;
   score?: number;

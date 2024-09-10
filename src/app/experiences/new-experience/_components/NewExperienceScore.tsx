@@ -10,7 +10,7 @@ type TProps = {
 };
 
 export default function NewExperienceScore(props: TProps) {
-  const [scoreValue, setScoreValue] = useState(2);
+  const [scoreValue, setScoreValue] = useState(1);
 
   useEffect(() => {
     props.setValue("score", scoreValue);
@@ -34,13 +34,13 @@ export default function NewExperienceScore(props: TProps) {
           name="rating-8"
           className="mask mask-star-2 bg-orange-400"
           onChange={() => setScoreValue(1)}
+          defaultChecked
         />
         <input
           type="radio"
           name="rating-8"
           className="mask mask-star-2 bg-orange-400"
           onChange={() => setScoreValue(2)}
-          defaultChecked
         />
         <input
           type="radio"

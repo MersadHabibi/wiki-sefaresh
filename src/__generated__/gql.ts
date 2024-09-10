@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
+    "\n  mutation createExperience($input: createExperienceInput) {\n    createExperience(input: $input) {\n      id\n    }\n  }\n": types.CreateExperienceDocument,
     "\n  mutation createStore($input: createStoreInput) {\n    createStore(input: $input) {\n      id\n    }\n  }\n": types.CreateStoreDocument,
     "\n  query Experiences {\n    experiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperiencesDocument,
     "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n": types.AllStoresDocument,
@@ -21,6 +22,7 @@ const documents = {
     "\n  query LastExperiencesByStore($storeId: ID!) {\n    lastExperiencesByStore(id: $storeId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesByStoreDocument,
     "\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n": types.PopularStoresDocument,
     "\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n": types.StoreByIdDocument,
+    "\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n": types.StoresNameAndIdDocument,
 };
 
 /**
@@ -37,6 +39,10 @@ const documents = {
  */
 export function gql(source: string): unknown;
 
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  mutation createExperience($input: createExperienceInput) {\n    createExperience(input: $input) {\n      id\n    }\n  }\n"): (typeof documents)["\n  mutation createExperience($input: createExperienceInput) {\n    createExperience(input: $input) {\n      id\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -69,6 +75,10 @@ export function gql(source: "\n  query PopularStores {\n    popularStores {\n   
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function gql(source: "\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n"): (typeof documents)["\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n"];
+/**
+ * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function gql(source: "\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

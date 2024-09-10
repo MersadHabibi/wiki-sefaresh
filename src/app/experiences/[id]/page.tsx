@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { formatDistanceToNow } from "date-fns";
 import { faIR } from "date-fns/locale";
 import {
+  ArrowLeftIcon,
   CircleAlertIcon,
   StoreIcon,
   ThumbsDownIcon,
@@ -30,8 +31,6 @@ export default function ExperiencePage({
       locale: faIR, // Set locale to Persian
     },
   );
-
-  console.log(data?.experience.score);
 
   if (error) return null;
 
@@ -145,6 +144,12 @@ export default function ExperiencePage({
                   </p>
                 </div>
               </div>
+              <Link
+                href={`/experiences?storeId=${data?.experience.storeId}`}
+                className="btn btn-primary mt-4 flex w-full items-center gap-x-2 rounded-md border-none bg-primary font-medium text-font-color-dark xs:text-base">
+                دیدن تجربه های دیگر این فروشگاه
+                <ArrowLeftIcon className="size-5 sm:size-6" />
+              </Link>
             </div>
           </div>
         )}
