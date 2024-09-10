@@ -63,10 +63,10 @@ input createExperienceInput {
 }
 
 type Query {
-  stores(page: Int, pageSize: Int): PaginationStores!
+  stores(page: Int, pageSize: Int, search: String): PaginationStores!
   store(id: ID!): Store!
   popularStores: [Store]!
-  experiences(page: Int, pageSize: Int): PaginationExperiences!
+  experiences(page: Int, pageSize: Int, search: String): PaginationExperiences!
   experience(id: ID!): Experience!
   lastExperiences: [Experience]!
   lastExperiencesByStore(id: ID!): [Experience]!

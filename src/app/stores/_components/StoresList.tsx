@@ -17,6 +17,7 @@ export default function StoresList() {
     variables: {
       page: Number(searchParams.get("page")) || 1,
       pageSize: isLGDevice ? 12 : 8,
+      search: searchParams.get("search") || "",
     },
   });
 

@@ -21,18 +21,35 @@ const resolvers = {
       args: {
         page?: number;
         pageSize?: number;
+        search?: string;
       },
       ctx: TGraphQLContext,
     ) => {
       try {
         const stores = await ctx?.prisma?.store.findMany({
+          where: {
+            OR: [
+              { name: { contains: args.search, mode: "insensitive" } },
+              { activityField: { contains: args.search, mode: "insensitive" } },
+            ],
+          },
           skip: args.pageSize
             ? ((args.page || 0) - 1) * args.pageSize
             : undefined,
           take: args.pageSize || undefined,
         });
 
-        const totalStores = (await ctx?.prisma?.store.count()) || 0;
+        const totalStores =
+          (await ctx?.prisma?.store.count({
+            where: {
+              OR: [
+                { name: { contains: args.search, mode: "insensitive" } },
+                {
+                  activityField: { contains: args.search, mode: "insensitive" },
+                },
+              ],
+            },
+          })) || 0;
         const totalPages = Math.ceil(totalStores / (args.pageSize || 1));
 
         return {
@@ -104,18 +121,33 @@ const resolvers = {
       args: {
         page?: number;
         pageSize?: number;
+        search?: string;
       },
       ctx: TGraphQLContext,
     ) => {
       try {
         const experiences = await ctx?.prisma?.experience.findMany({
+          where: {
+            OR: [
+              { title: { contains: args.search, mode: "insensitive" } },
+              { body: { contains: args.search, mode: "insensitive" } },
+            ],
+          },
           skip: args.pageSize
             ? ((args.page || 0) - 1) * args.pageSize
             : undefined,
           take: args.pageSize || undefined,
         });
 
-        const totalExperiences = (await ctx?.prisma?.experience.count()) || 0;
+        const totalExperiences =
+          (await ctx?.prisma?.experience.count({
+            where: {
+              OR: [
+                { title: { contains: args.search, mode: "insensitive" } },
+                { body: { contains: args.search, mode: "insensitive" } },
+              ],
+            },
+          })) || 0;
         const totalPages = Math.ceil(totalExperiences / (args.pageSize || 1));
 
         return {

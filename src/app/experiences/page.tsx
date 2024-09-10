@@ -3,22 +3,14 @@ import SortSelectBox from "@/components/modules/SortSelectBox";
 import StoreSelectBox from "./_components/StoreSelectBox";
 import { SearchIcon } from "lucide-react";
 import ExperiencesList from "./_components/ExperiencesList";
+import SearchExperiences from "./_components/SearchExperiences";
 
 export default function ExperiencePage() {
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950">
       <section className="container flex flex-col gap-5 lg:flex-row 2xl:gap-x-7">
         <div className="shrink-0">
-          <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900 lg:w-80 2xl:w-96">
-            <input
-              type="text"
-              className="grow !border-none !outline-none"
-              placeholder="جستجو..."
-            />
-            <button>
-              <SearchIcon className="size-7" />
-            </button>
-          </label>
+          <SearchExperiences />
           <StoreSelectBox />
           <SortSelectBox
             options={["مرتبط ترین", "جدیدترین", "مثبت ترین", "منفی ترین"]}

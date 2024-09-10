@@ -13,7 +13,8 @@ export default function ExperiencesList() {
   const { loading, error, data } = useQuery(GET_All_EXPERIENCES, {
     variables: {
       page: Number(searchParams.get("page")) || 1,
-      pageSize: 5,
+      pageSize: 10,
+      search: searchParams.get("search") || "",
     },
   });
 

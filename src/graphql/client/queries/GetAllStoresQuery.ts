@@ -1,8 +1,8 @@
 import { gql } from "@/__generated__";
 
 const GET_All_STORES = gql(/* GraphQL */ `
-  query AllStores($page: Int, $pageSize: Int) {
-    stores(page: $page, pageSize: $pageSize) {
+  query AllStores($page: Int, $pageSize: Int, $search: String) {
+    stores(page: $page, pageSize: $pageSize, search: $search) {
       pageInfo {
         currentPage
         pageSize

@@ -1,6 +1,7 @@
 import SortSelectBox from "@/components/modules/SortSelectBox";
 import { SearchIcon } from "lucide-react";
 import StoresList from "./_components/StoresList";
+import SearchStores from "./_components/SearchStores";
 
 export default function StoresPage() {
   
@@ -9,16 +10,7 @@ export default function StoresPage() {
       <section className="container">
         <div className="grid grid-cols-1 md:gap-5 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-x-7">
           <div className="w-full shrink-0">
-            <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900">
-              <input
-                type="text"
-                className="grow !border-none !outline-none"
-                placeholder="جستجو..."
-              />
-              <button>
-                <SearchIcon className="size-7" />
-              </button>
-            </label>
+            <SearchStores />
           </div>
           <SortSelectBox
             options={["مرتبط ترین", "بهترین امتیاز", "بدترین امتیاز"]}
