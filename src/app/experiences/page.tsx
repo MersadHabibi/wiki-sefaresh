@@ -1,9 +1,8 @@
-import ExperienceCard from "@/components/modules/ExperienceCard";
 import SortSelectBox from "@/components/modules/SortSelectBox";
-import StoreSelectBox from "./_components/StoreSelectBox";
-import { SearchIcon } from "lucide-react";
 import ExperiencesList from "./_components/ExperiencesList";
 import SearchExperiences from "./_components/SearchExperiences";
+import SortExperiences, { sorts } from "./_components/SortExperiences";
+import StoreSelectBox from "./_components/StoreSelectBox";
 
 export default function ExperiencePage() {
   return (
@@ -13,27 +12,11 @@ export default function ExperiencePage() {
           <SearchExperiences />
           <StoreSelectBox />
           <SortSelectBox
-            options={["مرتبط ترین", "جدیدترین", "مثبت ترین", "منفی ترین"]}
+            options={sorts}
           />
         </div>
         <div className="w-full">
-          <div className="hidden h-16 w-full items-center rounded-lg bg-neutral-200 px-6 dark:bg-neutral-900 md:flex">
-            <p className="font-bold">مرتب کردن بر اساس:</p>
-            <div className="flex h-full gap-x-4 pr-7">
-              <button className="active h-full border-primary px-2 opacity-70 hover:opacity-80 [&.active]:border-y-2 [&.active]:font-medium [&.active]:opacity-100">
-                مرتبط ترین
-              </button>
-              <button className="h-full border-primary px-2 opacity-70 hover:opacity-80 [&.active]:border-y-2 [&.active]:font-medium [&.active]:opacity-100">
-                جدیدترین
-              </button>
-              <button className="h-full border-primary px-2 opacity-70 hover:opacity-80 [&.active]:border-y-2 [&.active]:font-medium [&.active]:opacity-100">
-                مثبت ترین
-              </button>
-              <button className="h-full border-primary px-2 opacity-70 hover:opacity-80 [&.active]:border-y-2 [&.active]:font-medium [&.active]:opacity-100">
-                منفی ترین
-              </button>
-            </div>
-          </div>
+          <SortExperiences />
 
           <ExperiencesList />
         </div>

@@ -1,8 +1,8 @@
 import { gql } from "@/__generated__";
 
 const GET_STORES_NAME_AND_ID = gql(/* GraphQL */ `
-  query StoresNameAndId {
-    stores {
+  query StoresNameAndId($search: String) {
+    stores(search: $search) {
       data {
         id
         name

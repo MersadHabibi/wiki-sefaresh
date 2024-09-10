@@ -3,6 +3,7 @@
 import ExperienceCard from "@/components/modules/ExperienceCard";
 import ExperienceCardSkeleton from "@/components/modules/ExperienceCardSkeleton";
 import Pagination from "@/components/modules/Pagination";
+import { EXPERIENCES_SORTS } from "@/enums";
 import GET_All_EXPERIENCES from "@/graphql/client/queries/GetAllExperiences";
 import { useQuery } from "@apollo/client";
 import { useSearchParams } from "next/navigation";
@@ -15,6 +16,15 @@ export default function ExperiencesList() {
       page: Number(searchParams.get("page")) || 1,
       pageSize: 10,
       search: searchParams.get("search") || "",
+      // @ts-expect-error
+      sort: searchParams.get("sortBy")
+        ? Object.values(EXPERIENCES_SORTS).includes(
+            searchParams.get("sortBy") as EXPERIENCES_SORTS,
+          )
+          ? (searchParams.get("sortBy") as EXPERIENCES_SORTS)
+          : undefined
+        : undefined,
+      storeId: searchParams.get("storeId") || undefined,
     },
   });
 

@@ -1,3 +1,4 @@
+import { EXPERIENCES_SORTS, STORES_SORTS } from "@/enums";
 import createExperienceMutation from "@/graphql/server/createExperienceMutation";
 import createStoreMutation from "@/graphql/server/createStoreMutation";
 import { TExperience, TGraphQLContext, TStore } from "@/types";
@@ -22,15 +23,37 @@ const resolvers = {
         page?: number;
         pageSize?: number;
         search?: string;
+        sort?: STORES_SORTS;
       },
       ctx: TGraphQLContext,
     ) => {
       try {
+        console.log(args.sort);
         const stores = await ctx?.prisma?.store.findMany({
+          orderBy: {
+            score:
+              args.sort === STORES_SORTS.HIGHEST_SCORE
+                ? "desc"
+                : args.sort === STORES_SORTS.LOWEST_SCORE
+                  ? "asc"
+                  : undefined,
+            experiencesCount:
+              args.sort === STORES_SORTS.MOST_EXPERIENCES ? "desc" : undefined,
+          },
           where: {
             OR: [
-              { name: { contains: args.search, mode: "insensitive" } },
-              { activityField: { contains: args.search, mode: "insensitive" } },
+              {
+                name: {
+                  contains: args.search || "",
+                  mode: "insensitive",
+                },
+              },
+              {
+                activityField: {
+                  contains: args.search || "",
+                  mode: "insensitive",
+                },
+              },
             ],
           },
           skip: args.pageSize
@@ -43,9 +66,12 @@ const resolvers = {
           (await ctx?.prisma?.store.count({
             where: {
               OR: [
-                { name: { contains: args.search, mode: "insensitive" } },
+                { name: { contains: args.search || "", mode: "insensitive" } },
                 {
-                  activityField: { contains: args.search, mode: "insensitive" },
+                  activityField: {
+                    contains: args.search || "",
+                    mode: "insensitive",
+                  },
                 },
               ],
             },
@@ -122,15 +148,28 @@ const resolvers = {
         page?: number;
         pageSize?: number;
         search?: string;
+        sort?: EXPERIENCES_SORTS;
+        storeId?: string;
       },
       ctx: TGraphQLContext,
     ) => {
       try {
         const experiences = await ctx?.prisma?.experience.findMany({
+          orderBy: {
+            score:
+              args.sort === EXPERIENCES_SORTS.HIGHEST_SCORE
+                ? "desc"
+                : args.sort === EXPERIENCES_SORTS.LOWEST_SCORE
+                  ? "asc"
+                  : undefined,
+            createdAt:
+              args.sort === EXPERIENCES_SORTS.NEWEST ? "desc" : undefined,
+          },
           where: {
+            storeId: args.storeId || undefined,
             OR: [
-              { title: { contains: args.search, mode: "insensitive" } },
-              { body: { contains: args.search, mode: "insensitive" } },
+              { title: { contains: args.search || "", mode: "insensitive" } },
+              { body: { contains: args.search || "", mode: "insensitive" } },
             ],
           },
           skip: args.pageSize
@@ -142,9 +181,10 @@ const resolvers = {
         const totalExperiences =
           (await ctx?.prisma?.experience.count({
             where: {
+              storeId: args.storeId || undefined,
               OR: [
-                { title: { contains: args.search, mode: "insensitive" } },
-                { body: { contains: args.search, mode: "insensitive" } },
+                { title: { contains: args.search || "", mode: "insensitive" } },
+                { body: { contains: args.search || "", mode: "insensitive" } },
               ],
             },
           })) || 0;

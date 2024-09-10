@@ -4,22 +4,17 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { TPageInfo } from "@/types";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import useSearchQueries from "@/hooks/useSearchQueries";
 
 type TProps = {
   pageInfo?: TPageInfo;
 };
 
 export default function Pagination(props: TProps) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const setSearchParams = useSearchQueries();
 
   const navigate = (target: string) => {
-    const URL = new URLSearchParams(Array.from(searchParams.entries()));
-
-    URL.set("page", target);
-
-    router.push(pathname + "?" + URL.toString());
+    setSearchParams("page", target);
   };
 
   return (

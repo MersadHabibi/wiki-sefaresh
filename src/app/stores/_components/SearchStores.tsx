@@ -1,23 +1,17 @@
 "use client";
 
+import useSearchQueries from "@/hooks/useSearchQueries";
 import { SearchIcon } from "lucide-react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
 export default function SearchStores() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
+  const setSearchParams = useSearchQueries();
   const [searchValue, setSearchValue] = useState("");
 
   const searchHandler = useCallback(() => {
-    const URL = new URLSearchParams(Array.from(searchParams.entries()));
-
-    URL.set("search", searchValue);
-    URL.set("page", "1");
-
-    router.push(pathname + "?" + URL.toString());
-  }, [searchValue, searchParams, router, pathname]);
+    setSearchParams("search", searchValue);
+    setSearchParams("page", "1");
+  }, [setSearchParams, searchValue]);
 
   return (
     <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900">

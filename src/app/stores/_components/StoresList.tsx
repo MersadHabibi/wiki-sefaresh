@@ -1,6 +1,7 @@
 "use client";
 
 import Pagination from "@/components/modules/Pagination";
+import { STORES_SORTS } from "@/enums";
 import GET_All_STORES from "@/graphql/client/queries/GetAllStoresQuery";
 import { useQuery } from "@apollo/client";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -17,7 +18,15 @@ export default function StoresList() {
     variables: {
       page: Number(searchParams.get("page")) || 1,
       pageSize: isLGDevice ? 12 : 8,
-      search: searchParams.get("search") || "",
+      search: searchParams.get("search") || undefined,
+      // @ts-expect-error
+      sort: searchParams.get("sortBy")
+        ? Object.values(STORES_SORTS).includes(
+            searchParams.get("sortBy") as STORES_SORTS,
+          )
+          ? (searchParams.get("sortBy") as STORES_SORTS)
+          : undefined
+        : undefined,
     },
   });
 
