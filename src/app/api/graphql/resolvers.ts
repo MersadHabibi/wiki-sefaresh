@@ -62,13 +62,14 @@ const resolvers = {
 
     popularStores: async (_: any, __: any, ctx: TGraphQLContext) => {
       try {
-        const stores = await ctx.prisma?.store.findMany({});
-
-        const popularStores = stores?.sort((a, b) => {
-          return b.experiencesCount - a.experiencesCount;
+        const stores = await ctx.prisma?.store.findMany({
+          orderBy: {
+            experiencesCount: "desc",
+          },
+          take: 30,
         });
 
-        return popularStores?.slice(0, 30);
+        return stores;
       } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },
