@@ -16,11 +16,33 @@ const resolvers = {
   URL: URLResolver,
 
   Query: {
-    stores: async (_: any, __: any, ctx: TGraphQLContext) => {
+    stores: async (
+      _: any,
+      args: {
+        page?: number;
+        pageSize?: number;
+      },
+      ctx: TGraphQLContext,
+    ) => {
       try {
-        const stores = await ctx.prisma?.store.findMany({});
+        const stores = await ctx?.prisma?.store.findMany({
+          skip: args.pageSize
+            ? ((args.page || 0) - 1) * args.pageSize
+            : undefined,
+          take: args.pageSize || undefined,
+        });
 
-        return stores;
+        const totalStores = (await ctx?.prisma?.store.count()) || 0;
+        const totalPages = Math.ceil(totalStores / (args.pageSize || 1));
+
+        return {
+          pageInfo: {
+            currentPage: args.page || undefined,
+            pageSize: args.pageSize || undefined,
+            totalPages: totalPages || undefined,
+          },
+          data: stores,
+        };
       } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },
@@ -77,11 +99,33 @@ const resolvers = {
       }
     },
 
-    experiences: async (_: any, __: any, ctx: TGraphQLContext) => {
+    experiences: async (
+      _: any,
+      args: {
+        page?: number;
+        pageSize?: number;
+      },
+      ctx: TGraphQLContext,
+    ) => {
       try {
-        const experiences = await ctx.prisma?.experience.findMany({});
+        const experiences = await ctx?.prisma?.experience.findMany({
+          skip: args.pageSize
+            ? ((args.page || 0) - 1) * args.pageSize
+            : undefined,
+          take: args.pageSize || undefined,
+        });
 
-        return experiences;
+        const totalExperiences = (await ctx?.prisma?.experience.count()) || 0;
+        const totalPages = Math.ceil(totalExperiences / (args.pageSize || 1));
+
+        return {
+          pageInfo: {
+            currentPage: args.page || undefined,
+            pageSize: args.pageSize || undefined,
+            totalPages: totalPages || undefined,
+          },
+          data: experiences,
+        };
       } catch (error) {
         throw new GraphQLError("سرور با مشکل مواجه شد! لطفا بعدا امتحان کنید", {
           extensions: { code: 500 },

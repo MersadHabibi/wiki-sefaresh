@@ -1,17 +1,24 @@
 import { gql } from "@/__generated__";
 
 const GET_All_EXPERIENCES = gql(/* GraphQL */ `
-  query Experiences {
-    experiences {
-      id
-      title
-      body
-      createdAt
-      score
-      storeId
-      Store {
+  query Experiences($page: Int, $pageSize: Int) {
+    experiences(page: $page, pageSize: $pageSize) {
+      pageInfo {
+        currentPage
+        pageSize
+        totalPages
+      }
+      data {
         id
-        name
+        title
+        body
+        createdAt
+        score
+        storeId
+        Store {
+          id
+          name
+        }
       }
     }
   }

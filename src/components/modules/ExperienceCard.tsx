@@ -59,7 +59,6 @@ export default function ExperienceCard({ classNames, experience }: TProps) {
               .fill("")
               .map((_, index) => (
                 <input
-                  checked={false}
                   key={index}
                   className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
                 />

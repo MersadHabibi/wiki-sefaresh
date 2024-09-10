@@ -34,3 +34,9 @@ export type TError = {
   message: string;
   code: number;
 };
+
+export type TPageInfo = {
+  currentPage?: number | null;
+  pageSize?: number | null;
+  totalPages?: number | null;
+};

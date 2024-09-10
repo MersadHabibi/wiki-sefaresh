@@ -15,14 +15,14 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n  mutation createExperience($input: createExperienceInput) {\n    createExperience(input: $input) {\n      id\n    }\n  }\n": types.CreateExperienceDocument,
     "\n  mutation createStore($input: createStoreInput) {\n    createStore(input: $input) {\n      id\n    }\n  }\n": types.CreateStoreDocument,
-    "\n  query Experiences {\n    experiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperiencesDocument,
-    "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n": types.AllStoresDocument,
+    "\n  query Experiences($page: Int, $pageSize: Int) {\n    experiences(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        title\n        body\n        createdAt\n        score\n        storeId\n        Store {\n          id\n          name\n        }\n      }\n    }\n  }\n": types.ExperiencesDocument,
+    "\n  query AllStores($page: Int, $pageSize: Int) {\n    stores(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        name\n        activityField\n        experiencesCount\n        website\n        score\n      }\n    }\n  }\n": types.AllStoresDocument,
     "\n  query ExperienceById($experienceId: ID!) {\n    experience(id: $experienceId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      product\n      orderDate\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.ExperienceByIdDocument,
     "\n  query LastExperiences {\n    lastExperiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesDocument,
     "\n  query LastExperiencesByStore($storeId: ID!) {\n    lastExperiencesByStore(id: $storeId) {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n": types.LastExperiencesByStoreDocument,
     "\n  query PopularStores {\n    popularStores {\n      id\n      name\n    }\n  }\n": types.PopularStoresDocument,
     "\n  query StoreById($storeId: ID!) {\n    store(id: $storeId) {\n      id\n      website\n      telegram\n      score\n      name\n      instagram\n      experiencesCount\n      activityField\n    }\n  }\n": types.StoreByIdDocument,
-    "\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n": types.StoresNameAndIdDocument,
+    "\n  query StoresNameAndId {\n    stores {\n      data {\n        id\n        name\n      }\n    }\n  }\n": types.StoresNameAndIdDocument,
 };
 
 /**
@@ -50,11 +50,11 @@ export function gql(source: "\n  mutation createStore($input: createStoreInput) 
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query Experiences {\n    experiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query Experiences {\n    experiences {\n      id\n      title\n      body\n      createdAt\n      score\n      storeId\n      Store {\n        id\n        name\n      }\n    }\n  }\n"];
+export function gql(source: "\n  query Experiences($page: Int, $pageSize: Int) {\n    experiences(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        title\n        body\n        createdAt\n        score\n        storeId\n        Store {\n          id\n          name\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query Experiences($page: Int, $pageSize: Int) {\n    experiences(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        title\n        body\n        createdAt\n        score\n        storeId\n        Store {\n          id\n          name\n        }\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n"): (typeof documents)["\n  query AllStores {\n    stores {\n      id\n      name\n      activityField\n      experiencesCount\n      website\n      score\n    }\n  }\n"];
+export function gql(source: "\n  query AllStores($page: Int, $pageSize: Int) {\n    stores(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        name\n        activityField\n        experiencesCount\n        website\n        score\n      }\n    }\n  }\n"): (typeof documents)["\n  query AllStores($page: Int, $pageSize: Int) {\n    stores(page: $page, pageSize: $pageSize) {\n      pageInfo {\n        currentPage\n        pageSize\n        totalPages\n      }\n      data {\n        id\n        name\n        activityField\n        experiencesCount\n        website\n        score\n      }\n    }\n  }\n"];
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -78,7 +78,7 @@ export function gql(source: "\n  query StoreById($storeId: ID!) {\n    store(id:
 /**
  * The gql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function gql(source: "\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n"): (typeof documents)["\n  query StoresNameAndId {\n    stores {\n      id\n      name\n    }\n  }\n"];
+export function gql(source: "\n  query StoresNameAndId {\n    stores {\n      data {\n        id\n        name\n      }\n    }\n  }\n"): (typeof documents)["\n  query StoresNameAndId {\n    stores {\n      data {\n        id\n        name\n      }\n    }\n  }\n"];
 
 export function gql(source: string) {
   return (documents as any)[source] ?? {};

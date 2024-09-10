@@ -44,7 +44,7 @@ export default function StoreNameInput(props: TProps) {
   const [storeName, setStoreName] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [filteredStores, setFilteredStores] = useState(() =>
-    data?.stores.filter((store) =>
+    data?.stores.data.filter((store) =>
       store?.name.toLowerCase().includes(storeName.toLowerCase()),
     ),
   );
@@ -52,7 +52,7 @@ export default function StoreNameInput(props: TProps) {
 
   const filterAutoCompleteOptions = useCallback(
     (value: string) => {
-      const filteredOptions = data?.stores.filter((store) =>
+      const filteredOptions = data?.stores.data.filter((store) =>
         store?.name.toLowerCase().includes(value.toLowerCase()),
       );
 
@@ -99,7 +99,9 @@ export default function StoreNameInput(props: TProps) {
     const storeId = searchParams.get("storeId");
 
     if (storeId) {
-      const selectedStore = data?.stores.find((store) => store?.id == storeId);
+      const selectedStore = data?.stores.data.find(
+        (store) => store?.id == storeId,
+      );
 
       if (selectedStore) {
         setStoreName(selectedStore?.name);
@@ -109,7 +111,7 @@ export default function StoreNameInput(props: TProps) {
   }, [searchParams, data?.stores]);
 
   useEffect(() => {
-    const selectedStore = data?.stores.find(
+    const selectedStore = data?.stores.data.find(
       (store) => store?.name === storeName,
     );
 

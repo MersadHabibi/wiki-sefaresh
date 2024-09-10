@@ -1,55 +1,10 @@
 "use client";
 
-import GET_All_STORES from "@/graphql/client/queries/GetAllStoresQuery";
 import GET_POPULAR_STORES from "@/graphql/client/queries/GetPopularStores";
-import { TStore } from "@/types";
 import { useQuery } from "@apollo/client";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
-
-export const fakeStores = [
-  "دیجی کالا",
-  "الانزا",
-  "اتما",
-  "بانی مد",
-  "تیمچه",
-  "مقداد آی تی",
-  "زیمانو",
-  "شیکسون",
-  "عسل بانو",
-  "اسنپ شاپ",
-  "تاپ کوپن",
-  "ترب",
-  "ایمالز",
-  "هیس",
-  "دیجی استایل",
-  "مالتینا",
-  "تکنولایف",
-  "مدیسه",
-  "نورنگار",
-  "زنبیل",
-  "باسلام",
-  "19 کالا",
-  "ابزار آلات",
-  "آسرون ",
-  "تکنو لایف",
-  "کامپیوتر مرکزی",
-  // "خانومی",
-  // "خانه اوستا",
-  // "مو تن رو",
-  // "فرش آنلاین",
-  // "گالری سکه و طلا نیری",
-  // "چشمک",
-  // "هایپر ساز",
-  // "دیجی استایل",
-  // "بانه دات کام",
-  // "مدیسه",
-  // "زنبیل",
-  // "اتما",
-  // "بایا",
-  // "چاره",
-];
 
 export default function Stores() {
   const isXLDevice = useMediaQuery("only screen and (min-width : 1280px)");

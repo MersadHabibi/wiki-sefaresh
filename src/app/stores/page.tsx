@@ -1,6 +1,5 @@
 import SortSelectBox from "@/components/modules/SortSelectBox";
-import { SearchIcon, StoreIcon } from "lucide-react";
-import Link from "next/link";
+import { SearchIcon } from "lucide-react";
 import StoresList from "./_components/StoresList";
 
 export default function StoresPage() {

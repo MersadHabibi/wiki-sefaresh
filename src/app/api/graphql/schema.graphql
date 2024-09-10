@@ -3,6 +3,12 @@ scalar PositiveFloat
 scalar PositiveInt
 scalar URL
 
+type Pagination {
+  currentPage: Int
+  pageSize: Int
+  totalPages: Int
+}
+
 type Store {
   id: ID!
   name: String!
@@ -16,6 +22,11 @@ type Store {
   experiences: [Experience]
 }
 
+type PaginationStores {
+  pageInfo: Pagination!
+  data: [Store]!
+}
+
 type Experience {
   id: String!
   title: String!
@@ -27,6 +38,11 @@ type Experience {
 
   storeId: ID!
   Store: Store!
+}
+
+type PaginationExperiences {
+  pageInfo: Pagination!
+  data: [Experience]!
 }
 
 input createStoreInput {
@@ -47,10 +63,10 @@ input createExperienceInput {
 }
 
 type Query {
-  stores: [Store]!
+  stores(page: Int, pageSize: Int): PaginationStores!
   store(id: ID!): Store!
   popularStores: [Store]!
-  experiences: [Experience]!
+  experiences(page: Int, pageSize: Int): PaginationExperiences!
   experience(id: ID!): Experience!
   lastExperiences: [Experience]!
   lastExperiencesByStore(id: ID!): [Experience]!
