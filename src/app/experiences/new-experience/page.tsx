@@ -9,7 +9,7 @@ export default function NewExperiencePage() {
       <section className="container">
         <div className="mb-5 flex h-fit w-full items-center gap-x-2 rounded-lg bg-warning/90 px-4 py-2 font-medium text-black sm:h-14 sm:gap-x-4 sm:px-6 sm:py-0 md:text-lg ">
           <CircleAlertIcon className="size-6 shrink-0 sm:size-7" />
-          <p className="">
+          <p>
             اگر فروشگاه مورد نظر موجود نبود در{" "}
             <Link
               className="text-blue-600 hover:underline dark:text-blue-700"

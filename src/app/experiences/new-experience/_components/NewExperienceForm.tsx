@@ -10,7 +10,7 @@ import {
 } from "./NewExperienceFormSchema";
 import StoreNameInput from "./StoreNameInput";
 import NewExperienceScore from "./NewExperienceScore";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useMutation } from "@apollo/client";
 import CREATE_EXPERIENCE from "@/graphql/client/mutations/CreateExperienceMutation";
 import toast from "react-hot-toast";
@@ -80,15 +80,17 @@ export default function NewExperienceForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="grid w-full grid-cols-6 gap-6 overflow-hidden rounded-lg bg-neutral-200 p-5 text-start dark:bg-neutral-900 sm:p-8 xl:gap-x-10 xl:gap-y-8"
       autoComplete="off">
-      <StoreNameInput
-        setValue={setValue}
-        isTrueStoreName={isTrueStoreName}
-        setIsTrueStoreName={setIsTrueStoreName}
-        register={register}
-        error={errors.storeName}
-        setError={setError}
-        clearErrors={clearErrors}
-      />
+      <Suspense>
+        <StoreNameInput
+          setValue={setValue}
+          isTrueStoreName={isTrueStoreName}
+          setIsTrueStoreName={setIsTrueStoreName}
+          register={register}
+          error={errors.storeName}
+          setError={setError}
+          clearErrors={clearErrors}
+        />
+      </Suspense>
       <Input
         classNames={{
           container: "col-span-6 md:col-span-3",
