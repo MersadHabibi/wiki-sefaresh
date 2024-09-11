@@ -19,7 +19,7 @@ export default function SortSelectBox({ options }: { options: TOption[] }) {
 
   const sortHandler = (sortValue: string) => {
     setIsOpen(false);
-    setSearchParams("sortBy", sortValue);
+    setSearchParams(["sortBy", "page"], [sortValue, "1"]);
   };
 
   const selectedOption = options.find(

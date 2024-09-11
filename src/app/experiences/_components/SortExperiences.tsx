@@ -1,6 +1,6 @@
 "use client";
 
-import { EXPERIENCES_SORTS, STORES_SORTS } from "@/enums";
+import { EXPERIENCES_SORTS } from "@/enums";
 import useSearchQueries from "@/hooks/useSearchQueries";
 import { cn } from "@/lib/utils";
 import { useSearchParams } from "next/navigation";
@@ -29,7 +29,7 @@ export default function SortExperiences() {
   const searchParams = useSearchParams();
 
   const sortHandler = (sortValue: EXPERIENCES_SORTS) => {
-    setSearchParams("sortBy", sortValue);
+    setSearchParams(["sortBy", "page"], [sortValue , "1"]);
   };
 
   return (

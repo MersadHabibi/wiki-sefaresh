@@ -2,16 +2,27 @@
 
 import useSearchQueries from "@/hooks/useSearchQueries";
 import { SearchIcon } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function SearchStores() {
   const setSearchParams = useSearchQueries();
+  const searchParams = useSearchParams();
   const [searchValue, setSearchValue] = useState("");
 
-  const searchHandler = useCallback(() => {
-    setSearchParams("search", searchValue);
-    setSearchParams("page", "1");
-  }, [setSearchParams, searchValue]);
+  const searchHandler = () => {
+    setSearchParams(["search" , "page"], [searchValue , "1"]);
+  };
+
+  useEffect(() => {
+    const searchValue = searchParams.get("search");
+
+    if (searchValue) setSearchParams(["search"], [searchValue]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log("work");
 
   return (
     <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900">

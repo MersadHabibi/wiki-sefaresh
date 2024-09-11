@@ -29,7 +29,7 @@ export default function SortStores() {
   const searchParams = useSearchParams();
 
   const sortHandler = (sortValue: STORES_SORTS) => {
-    setSearchParams("sortBy", sortValue);
+    setSearchParams(["sortBy" , "page"], [sortValue , "1"]);
   };
 
   return (

@@ -1,6 +1,5 @@
 "use client";
 
-import GET_STORE_BY_ID from "@/graphql/client/queries/GetStoreById";
 import GET_STORE_NAME_AND_ID_BY_STORE_ID from "@/graphql/client/queries/GetStoreNameAndIdByStoreId";
 import GET_STORES_NAME_AND_ID from "@/graphql/client/queries/GetStoresNameAndId";
 import useSearchQueries from "@/hooks/useSearchQueries";
@@ -8,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { ChevronDownIcon } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type TStore = {
   id: string;
@@ -35,7 +34,7 @@ export default function StoreSelectBox() {
   });
 
   const selectStoreHandler = (store: TStore) => {
-    setSearchParams("storeId", store.id);
+    setSearchParams(["storeId", "page"], [store.id, "1"]);
     setSelectedOption(store);
     setIsOpen(false);
   };
@@ -61,7 +60,7 @@ export default function StoreSelectBox() {
     <div className="relative pt-5 2xl:pt-7">
       <div
         className={cn(
-          "flex h-16 items-center justify-between rounded-lg bg-neutral-200 px-6 font-medium dark:bg-neutral-900 xl:w-96",
+          "flex h-16 cursor-pointer items-center justify-between rounded-lg bg-neutral-200 px-6 font-medium dark:bg-neutral-900 xl:w-96",
           isOpen && "bg-neutral-300 dark:bg-neutral-800",
         )}
         onClick={() => setIsOpen(!isOpen)}>
