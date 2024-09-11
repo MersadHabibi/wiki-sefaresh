@@ -7,7 +7,7 @@ import { useQuery } from "@apollo/client";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { StoreIcon } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
 export default function StoresList() {
   const searchParams = useSearchParams();
@@ -30,7 +30,7 @@ export default function StoresList() {
     },
   });
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <>

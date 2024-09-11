@@ -4,12 +4,12 @@ import Input from "@/components/modules/Input";
 import GET_STORES_NAME_AND_ID from "@/graphql/client/queries/GetStoresNameAndId";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
+import { redirect, useSearchParams } from "next/navigation";
 import {
   Dispatch,
   SetStateAction,
   useCallback,
   useEffect,
-  useMemo,
   useState,
 } from "react";
 import {
@@ -20,7 +20,6 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 import { NewExperienceFormData } from "./NewExperienceFormSchema";
-import { useSearchParams } from "next/navigation";
 
 type TProps = {
   register: UseFormRegister<any>;
@@ -128,7 +127,7 @@ export default function StoreNameInput(props: TProps) {
     if (!loading) filterAutoCompleteOptions("");
   }, [loading, filterAutoCompleteOptions]);
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <Input

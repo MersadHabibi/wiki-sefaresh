@@ -4,13 +4,14 @@ import GET_STORE_BY_ID from "@/graphql/client/queries/GetStoreById";
 import { useQuery } from "@apollo/client";
 import { ArrowLeftIcon, StoreIcon } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function StoreSection({ storeId }: { storeId: string }) {
   const { loading, error, data } = useQuery(GET_STORE_BY_ID, {
     variables: { storeId },
   });
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   if (loading)
     return (

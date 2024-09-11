@@ -6,7 +6,7 @@ import useSearchQueries from "@/hooks/useSearchQueries";
 import { cn } from "@/lib/utils";
 import { useLazyQuery, useQuery } from "@apollo/client";
 import { ChevronDownIcon } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 type TStore = {
@@ -55,6 +55,8 @@ export default function StoreSelectBox() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getStore]);
+
+  if (error) return redirect("/500");
 
   return (
     <div className="relative pt-5 2xl:pt-7">

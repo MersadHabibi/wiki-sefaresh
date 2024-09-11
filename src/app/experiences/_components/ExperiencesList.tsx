@@ -6,7 +6,7 @@ import Pagination from "@/components/modules/Pagination";
 import { EXPERIENCES_SORTS } from "@/enums";
 import GET_All_EXPERIENCES from "@/graphql/client/queries/GetAllExperiences";
 import { useQuery } from "@apollo/client";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 
 export default function ExperiencesList() {
   const searchParams = useSearchParams();
@@ -14,7 +14,7 @@ export default function ExperiencesList() {
   const { loading, error, data } = useQuery(GET_All_EXPERIENCES, {
     variables: {
       page: Number(searchParams.get("page")) || 1,
-      pageSize: 10,
+      pageSize: 8,
       search: searchParams.get("search") || "",
       // @ts-expect-error
       sort: searchParams.get("sortBy")
@@ -28,7 +28,7 @@ export default function ExperiencesList() {
     },
   });
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <>

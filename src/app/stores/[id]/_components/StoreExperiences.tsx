@@ -3,19 +3,19 @@
 import ExperienceCard from "@/components/modules/ExperienceCard";
 import ExperienceCardSkeleton from "@/components/modules/ExperienceCardSkeleton";
 import { FMorabba } from "@/config/fonts";
-import GET_LAST_EXPERIENCES from "@/graphql/client/queries/GetLastExperiences";
 import GET_LAST_EXPERIENCES_BY_STORE from "@/graphql/client/queries/GetLastExperiencesByStore";
 import { cn } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function StoreExperiences({ storeId }: { storeId: string }) {
   const { loading, error, data } = useQuery(GET_LAST_EXPERIENCES_BY_STORE, {
     variables: { storeId },
   });
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <section className="container flex flex-col gap-y-7 px-0 pt-10 text-center sm:gap-y-10 lg:flex-row lg:text-start">
@@ -50,9 +50,17 @@ export default function StoreExperiences({ storeId }: { storeId: string }) {
             </Link>
           </>
         ) : (
-          <p className="pt-8 text-center text-base font-medium sm:text-lg">
-            تجربه ای برای این فروشگاه ثبت نشده است.
-          </p>
+          <div className="pt-8">
+            <p className=" text-center text-base font-medium sm:text-lg">
+              تجربه ای برای این فروشگاه ثبت نشده است.
+            </p>
+            <Link
+              href={`/experiences/new-experience?storeId=${storeId}`}
+              className="btn mx-auto mt-5 flex w-fit items-center gap-x-2 rounded-md border-2 !border-primary bg-transparent px-7 font-medium text-primary transition-colors hover:bg-primary hover:!text-font-color-dark dark:text-primary-dark xs:text-base">
+              اولین تجربه رو ثبت کن
+              <ArrowLeftIcon className="size-5 sm:size-6" />
+            </Link>
+          </div>
         )}
       </div>
     </section>

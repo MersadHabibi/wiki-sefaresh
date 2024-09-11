@@ -5,13 +5,14 @@ import { useQuery } from "@apollo/client";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Stores() {
   const isXLDevice = useMediaQuery("only screen and (min-width : 1280px)");
 
   const { loading, error, data } = useQuery(GET_POPULAR_STORES);
 
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">

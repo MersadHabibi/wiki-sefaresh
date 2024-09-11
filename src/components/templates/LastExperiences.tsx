@@ -8,12 +8,12 @@ import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import ExperienceCard from "../modules/ExperienceCard";
 import ExperienceCardSkeleton from "../modules/ExperienceCardSkeleton";
+import { redirect } from "next/navigation";
 
 export default function LastExperiences() {
   const { loading, error, data } = useQuery(GET_LAST_EXPERIENCES);
 
-  // TODO: create 500 and 404 page
-  if (error) return null;
+  if (error) return redirect("/500");
 
   return (
     <section className="container flex flex-col gap-y-7 pb-32 text-center sm:gap-y-10 lg:flex-row lg:text-start">
