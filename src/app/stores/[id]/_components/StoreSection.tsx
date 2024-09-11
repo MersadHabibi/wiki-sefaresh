@@ -44,7 +44,7 @@ export default function StoreSection({ storeId }: { storeId: string }) {
   return (
     <section className="w-full overflow-hidden rounded-lg bg-neutral-200 text-start dark:bg-neutral-900">
       <div className="flex items-center justify-between border-b border-b-neutral-400 px-5 py-3 dark:border-b-neutral-700 sm:px-8 sm:py-4">
-        <div className="flex items-center gap-x-3 text-second">
+        <div className="flex items-center gap-x-3 text-primary dark:text-primary-dark">
           <StoreIcon className="hidden size-8 shrink-0 sm:inline-block" />
           <h1 className="-mb-0.5 line-clamp-1 text-xl font-bold xs:max-w-56 sm:max-w-56 sm:text-2xl md:max-w-72 lg:max-w-52 xl:max-w-96 2xl:max-w-[470px]">
             {data?.store.name}

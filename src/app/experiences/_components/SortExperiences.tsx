@@ -29,7 +29,7 @@ export default function SortExperiences() {
   const searchParams = useSearchParams();
 
   const sortHandler = (sortValue: EXPERIENCES_SORTS) => {
-    setSearchParams(["sortBy", "page"], [sortValue , "1"]);
+    setSearchParams(["sortBy", "page"], [sortValue, "1"]);
   };
 
   return (

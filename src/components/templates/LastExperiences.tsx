@@ -17,7 +17,7 @@ export default function LastExperiences() {
 
   return (
     <section className="container flex flex-col gap-y-7 pb-32 text-center sm:gap-y-10 lg:flex-row lg:text-start">
-      <div className="shrink-0 lg:w-96 lg:pt-5 xl:w-[420px]">
+      <div className="top-24 h-fit shrink-0 lg:sticky lg:w-96 lg:pt-5 xl:w-[420px]">
         <h2
           className={cn(
             "mb-3 text-2xl font-semibold sm:mb-4 sm:text-4xl",

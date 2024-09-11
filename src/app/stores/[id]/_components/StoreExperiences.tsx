@@ -19,7 +19,7 @@ export default function StoreExperiences({ storeId }: { storeId: string }) {
 
   return (
     <section className="container flex flex-col gap-y-7 px-0 pt-10 text-center sm:gap-y-10 lg:flex-row lg:text-start">
-      <div className="shrink-0 lg:w-96 lg:pt-5 xl:w-[420px]">
+      <div className="top-24 h-fit shrink-0 lg:sticky lg:w-96 lg:pt-5 xl:w-[420px]">
         <h2
           className={cn(
             "mb-3 text-2xl font-semibold sm:mb-4 sm:text-4xl",
@@ -30,18 +30,15 @@ export default function StoreExperiences({ storeId }: { storeId: string }) {
         <div className="mx-auto h-1 w-40 rounded-full bg-primary dark:bg-primary-dark lg:mx-0"></div>
       </div>
       <div className="w-full space-y-4">
-        {data?.lastExperiencesByStore.length ? (
+        {loading ? (
+          new Array(4)
+            .fill("")
+            .map((_, index) => <ExperienceCardSkeleton key={index} />)
+        ) : data?.lastExperiencesByStore.length ? (
           <>
-            {loading
-              ? new Array(4)
-                  .fill("")
-                  .map((_, index) => <ExperienceCardSkeleton key={index} />)
-              : data?.lastExperiencesByStore.map((experience) => (
-                  <ExperienceCard
-                    key={experience?.id}
-                    experience={experience}
-                  />
-                ))}
+            {data?.lastExperiencesByStore.map((experience) => (
+              <ExperienceCard key={experience?.id} experience={experience} />
+            ))}
             <Link
               href={`/experiences?storeId=${storeId}`}
               className="btn btn-primary w-full gap-x-2 border-none bg-primary font-medium text-font-color-dark xs:text-base sm:gap-x-4">

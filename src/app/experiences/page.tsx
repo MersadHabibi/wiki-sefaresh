@@ -8,12 +8,10 @@ export default function ExperiencePage() {
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950">
       <section className="container flex flex-col gap-5 lg:flex-row 2xl:gap-x-7">
-        <div className="shrink-0">
+        <div className="top-28 h-fit shrink-0 lg:sticky">
           <SearchExperiences />
           <StoreSelectBox />
-          <SortSelectBox
-            options={sorts}
-          />
+          <SortSelectBox options={sorts} />
         </div>
         <div className="w-full">
           <SortExperiences />
