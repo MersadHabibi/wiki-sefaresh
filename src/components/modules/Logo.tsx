@@ -5,15 +5,15 @@ export default function Logo({ className }: { className?: string }) {
   return (
     <>
       <Image
-        className={cn("hidden size-8 dark:block sm:size-10", className)}
-        src={"/svg/Logo.svg"}
+        className={cn("hidden w-10 dark:block sm:w-12", className)}
+        src={"/svg/favicon-light.svg"}
         alt="ویکی تجربه لوگو"
         width={100}
         height={100}
       />
       <Image
-        className={cn("block size-8 dark:hidden sm:size-10", className)}
-        src={"/svg/Logo-light.svg"}
+        className={cn("block w-10 text-primary dark:hidden sm:w-12", className)}
+        src={"/svg/favicon.svg"}
         alt="ویکی تجربه لوگو"
         width={100}
         height={100}

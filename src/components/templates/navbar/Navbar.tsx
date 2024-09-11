@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <header className="h-16 w-full shrink-0 bg-neutral-200 dark:bg-neutral-900 sm:h-20">
       <div className="container flex h-full items-center justify-between">
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-2">
           <Logo />
           <Link
             href={"/"}
