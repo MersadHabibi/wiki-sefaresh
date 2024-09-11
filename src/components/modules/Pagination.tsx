@@ -15,6 +15,8 @@ export default function Pagination(props: TProps) {
     setSearchParams(["page"], [target]);
   };
 
+  if (!props.pageInfo?.totalPages) return null;
+
   return (
     <div className="mt-10 flex items-center justify-center gap-x-2">
       {/* prev page */}

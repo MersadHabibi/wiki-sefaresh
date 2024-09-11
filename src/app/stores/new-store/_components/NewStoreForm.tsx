@@ -74,8 +74,8 @@ export default function NewStoreForm() {
           input: "placeholder:text-end",
         }}
         name="instagram"
-        placeholder="آیدی اینستاگرام فروشگاه..."
         label="آیدی اینستاگرام فروشگاه (اختیاری)"
+        placeholder="مثال: digikalacom"
         register={register}
         error={errors.instagram}
       />
@@ -86,8 +86,8 @@ export default function NewStoreForm() {
           input: "placeholder:text-end",
         }}
         name="telegram"
-        placeholder="آیدی تلگرام فروشگاه..."
         label="آیدی تلگرام فروشگاه (اختیاری)"
+        placeholder="مثال: digikalacom"
         register={register}
         error={errors.telegram}
       />

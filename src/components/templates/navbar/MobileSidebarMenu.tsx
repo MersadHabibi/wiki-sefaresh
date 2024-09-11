@@ -57,11 +57,11 @@ const links = [
   //   href: "#",
   //   value: "تبلیغات",
   // },
-  {
-    href: "/donate",
-    value: "دونیت",
-    icon: <HandHeartIcon className="size-6" />,
-  },
+  // {
+  //   href: "/donate",
+  //   value: "دونیت",
+  //   icon: <HandHeartIcon className="size-6" />,
+  // },
 ];
 
 const menuLinkStyles =
@@ -111,7 +111,7 @@ export default function MobileSidebarMenu() {
           <nav className="pt-8">
             <ul className="space-y-4">
               {links.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} onClick={() => setIsOpen(false)}>
                   <NavLink href={link.href} className={menuLinkStyles}>
                     {link.icon}
                     <span>{link.value}</span>

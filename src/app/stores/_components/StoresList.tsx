@@ -34,6 +34,13 @@ export default function StoresList() {
 
   return (
     <>
+      {data?.stores.data.length || loading ? null : (
+        <div>
+          <p className="w-full pt-12 text-center text-2xl font-semibold ">
+            فروشگاهی پیدا نشد.
+          </p>
+        </div>
+      )}
       {loading ? (
         <div className="grid grid-cols-1 grid-rows-1 gap-5 pt-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:gap-7 2xl:pt-7">
           {new Array(8).fill("").map((_, index) => (
@@ -62,9 +69,9 @@ export default function StoresList() {
                 className="rounded-lg bg-neutral-200 p-4 dark:bg-neutral-900">
                 <Link
                   href={`/stores/${store?.id}`}
-                  className="flex items-center gap-x-4 px-2 pb-5 pt-1 text-xl font-bold text-second">
+                  className="flex items-center gap-x-3 px-2 pb-5 pt-1 text-2xl font-bold text-primary dark:text-primary-dark">
                   <StoreIcon className="size-8" />
-                  <h3>{store?.name}</h3>
+                  <h3 className="line-clamp-1">{store?.name}</h3>
                 </Link>
                 {/* <div className="mt-4 h-px w-full rounded-full bg-neutral-400 dark:bg-neutral-800"></div> */}
                 <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">

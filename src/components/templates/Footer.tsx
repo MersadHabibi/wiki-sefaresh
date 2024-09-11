@@ -31,10 +31,10 @@ const links = [
   //   href: "#",
   //   value: "تبلیغات",
   // },
-  {
-    href: "/donate",
-    value: "دونیت",
-  },
+  // {
+  //   href: "/donate",
+  //   value: "دونیت",
+  // },
 ];
 
 export default function Footer() {

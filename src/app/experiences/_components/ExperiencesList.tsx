@@ -32,6 +32,13 @@ export default function ExperiencesList() {
 
   return (
     <>
+      {data?.experiences.data.length || loading ? null : (
+        <div>
+          <p className="w-full pt-12 text-center text-2xl font-semibold ">
+            تجربه ای پیدا نشد.
+          </p>
+        </div>
+      )}
       {loading ? (
         <div className="space-y-4 md:pt-5 2xl:pt-7">
           {new Array(4).fill("").map((_, index) => (

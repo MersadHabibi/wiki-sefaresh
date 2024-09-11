@@ -34,7 +34,7 @@ export default function ExperienceCard({ classNames, experience }: TProps) {
         <div className="flex flex-col gap-x-4 gap-y-1 sm:flex-row sm:items-center">
           <Link
             href={`/stores/${experience.storeId}`}
-            className="flex items-center gap-x-3 text-second">
+            className="flex items-center gap-x-3 text-primary dark:text-primary-dark">
             <StoreIcon className="hidden size-8 shrink-0 sm:inline-block" />
             <h3 className="-mb-0.5 line-clamp-1 text-xl font-bold xs:max-w-56 sm:max-w-56 sm:text-2xl md:max-w-72 lg:max-w-52 xl:max-w-96 2xl:max-w-[470px]">
               {experience.Store.name}

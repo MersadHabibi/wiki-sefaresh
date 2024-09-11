@@ -35,7 +35,7 @@ export default function LandingHeader() {
         <div className="flex w-full flex-col items-center gap-x-4 gap-y-2 pt-7 xs:flex-row xs:pt-5 lg:max-w-md xl:max-w-2xl">
           <Link
             href={"/experiences"}
-            className="btn h-12 w-full shrink border-none bg-second text-base text-font-color-dark transition-all hover:bg-second hover:brightness-75 dark:bg-second xl:text-lg">
+            className="btn h-12 w-full shrink border !border-primary bg-transparent text-base text-primary transition-all hover:bg-primary hover:!text-font-color-dark dark:text-primary-dark xl:text-lg">
             <EyeIcon className="size-5 xl:size-6" />
             <span>مشاهده تجربیات</span>
           </Link>

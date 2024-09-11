@@ -3,7 +3,7 @@
 import useSearchQueries from "@/hooks/useSearchQueries";
 import { SearchIcon } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function SearchStores() {
   const setSearchParams = useSearchQueries();
@@ -11,21 +11,21 @@ export default function SearchStores() {
   const [searchValue, setSearchValue] = useState("");
 
   const searchHandler = () => {
-    setSearchParams(["search" , "page"], [searchValue , "1"]);
+    setSearchParams(["search", "page"], [searchValue, "1"]);
   };
 
-  useEffect(() => {
-    const searchValue = searchParams.get("search");
+  const URLSearchValue = useMemo(() => {
+    return searchParams.get("search");
+  }, [searchParams]);
 
-    if (searchValue) setSearchParams(["search"], [searchValue]);
+  useEffect(() => {
+    if (URLSearchValue) setSearchValue(URLSearchValue);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  console.log("work");
+  }, [URLSearchValue]);
 
   return (
-    <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900">
+    <label className="input flex h-16 !w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900">
       <input
         type="text"
         className="grow !border-none !outline-none"

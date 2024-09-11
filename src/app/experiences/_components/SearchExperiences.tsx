@@ -25,7 +25,7 @@ export default function SearchExperiences() {
   }, [URLSearchValue]);
 
   return (
-    <label className="input flex h-16 w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900 lg:w-80 2xl:w-96">
+    <label className="input flex h-16 !w-full items-center gap-2 !border-none bg-neutral-200 px-6 !outline-none dark:bg-neutral-900 lg:w-80 2xl:w-96">
       <input
         value={searchValue}
         type="text"
