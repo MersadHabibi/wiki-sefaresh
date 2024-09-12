@@ -5,21 +5,22 @@ import {
 } from "@apollo/server/plugin/landingPage/default";
 import { startServerAndCreateNextHandler } from "@as-integrations/next";
 import { PrismaClient } from "@prisma/client";
-import { readFileSync } from "fs";
+import fs from "fs";
+
 import {
-  DateTimeResolver,
   DateTimeTypeDefinition,
-  PositiveFloatResolver,
   PositiveFloatTypeDefinition,
-  PositiveIntResolver,
   PositiveIntTypeDefinition,
-  URLResolver,
   URLTypeDefinition,
 } from "graphql-scalars";
 import { NextRequest } from "next/server";
+import path from "path";
 import resolvers from "./resolvers";
 
-const typeDefs = readFileSync("./src/app/api/graphql/schema.graphql", "utf8");
+const typeDefs = fs.readFileSync(
+  path.join(path.resolve(), "./src/app/api/graphql/schema.graphql"),
+  "utf-8",
+);
 
 let plugins = [];
 if (process.env.NODE_ENV === "production") {

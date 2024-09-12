@@ -1,6 +1,5 @@
 "use client";
 
-import { env } from "@/env";
 import {
   ApolloClient,
   InMemoryCache,
@@ -14,7 +13,7 @@ export default function ApolloClientProvider({
   children: React.ReactNode;
 }) {
   const client = new ApolloClient({
-    uri: env.NEXT_PUBLIC_BACKEND_URL,
+    uri: process.env.NEXT_PUBLIC_BACKEND_URL,
     cache: new InMemoryCache(),
   });
 
