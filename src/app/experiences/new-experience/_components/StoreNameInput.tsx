@@ -127,7 +127,7 @@ export default function StoreNameInput(props: TProps) {
     if (!loading) filterAutoCompleteOptions("");
   }, [loading, filterAutoCompleteOptions]);
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <Input

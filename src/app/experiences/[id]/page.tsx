@@ -33,7 +33,7 @@ export default function ExperiencePage({
     },
   );
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <main className="h-fit bg-neutral-100 pb-20 pt-10 dark:bg-neutral-950 lg:pb-20 lg:pt-10">

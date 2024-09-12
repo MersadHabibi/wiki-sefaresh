@@ -30,7 +30,7 @@ export default function StoresList() {
     },
   });
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <>

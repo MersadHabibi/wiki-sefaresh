@@ -56,7 +56,7 @@ export default function StoreSelectBox() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getStore]);
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <div className="relative pt-5 2xl:pt-7">

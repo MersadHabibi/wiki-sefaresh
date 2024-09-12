@@ -15,7 +15,7 @@ export default function StoreExperiences({ storeId }: { storeId: string }) {
     variables: { storeId },
   });
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <section className="container flex flex-col gap-y-7 px-0 pt-10 text-center sm:gap-y-10 lg:flex-row lg:text-start">

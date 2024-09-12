@@ -28,7 +28,7 @@ export default function ExperiencesList() {
     },
   });
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <>

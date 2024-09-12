@@ -11,7 +11,7 @@ export default function StoreSection({ storeId }: { storeId: string }) {
     variables: { storeId },
   });
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   if (loading)
     return (

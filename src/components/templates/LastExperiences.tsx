@@ -13,7 +13,7 @@ import { redirect } from "next/navigation";
 export default function LastExperiences() {
   const { loading, error, data } = useQuery(GET_LAST_EXPERIENCES);
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <section className="container flex flex-col gap-y-7 pb-32 text-center sm:gap-y-10 lg:flex-row lg:text-start">

@@ -12,7 +12,7 @@ export default function Stores() {
 
   const { loading, error, data } = useQuery(GET_POPULAR_STORES);
 
-  if (error) return redirect("/500");
+  if (error) return redirect("/error");
 
   return (
     <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
