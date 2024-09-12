@@ -126,16 +126,22 @@ export default function MobileSidebarMenu() {
             </p>
 
             <div className="flex items-center justify-center gap-x-6 pb-4 pt-4">
-              <Link href={""}>
+              <Link href={"https://www.linkedin.com/company/wiki-sefaresh/"}>
                 <LinkedinIcon className="size-7 text-[#0077B5]" />
               </Link>
-              <Link href={""}>
+              <Link
+                href={
+                  "https://x.com/wikisefaresh?t=QQRTrPCcl8aBR5H_bZDHPg&s=09"
+                }>
                 <TwitterIcon className="size-7 text-[#1DA1F2]" />
               </Link>
-              <Link href={""}>
+              <Link
+                href={
+                  "https://www.instagram.com/wikisefaresh?igsh=czkyY2RlMWozbWIz"
+                }>
                 <InstagramIcon className="size-7 text-[#cd486b]" />
               </Link>
-              <Link href={""}>
+              <Link href={"https://t.me/wikisefaresh"}>
                 <SendIcon className="size-7 text-[#229ED9]" />
               </Link>
             </div>

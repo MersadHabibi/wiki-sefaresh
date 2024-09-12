@@ -47,16 +47,16 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center justify-between pt-8">
-            <Link href={""}>
+            <Link href={"https://www.linkedin.com/company/wiki-sefaresh"}>
               <LinkedinIcon className="size-9 text-[#0077B5] sm:size-11" />
             </Link>
-            <Link href={""}>
+            <Link href={"https://x.com/wikisefaresh"}>
               <TwitterIcon className="size-9 text-[#1DA1F2] sm:size-11" />
             </Link>
-            <Link href={""}>
+            <Link href={"https://www.instagram.com/wikisefaresh"}>
               <InstagramIcon className="size-9 text-[#cd486b] sm:size-11" />
             </Link>
-            <Link href={""}>
+            <Link href={"https://t.me/wikisefaresh"}>
               <SendIcon className="size-9 text-[#229ED9] sm:size-11" />
             </Link>
           </div>
