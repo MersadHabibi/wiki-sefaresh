@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="fa" dir="rtl" className="font-sans">
       <body
         className={cn(
-          "min-h-dvh !overflow-y-auto bg-neutral-100 text-sm font-normal text-font-color dark:bg-neutral-950 dark:text-font-color-dark sm:text-base",
+          "bg-neutral-100 text-sm font-normal text-font-color dark:bg-neutral-950 dark:text-font-color-dark sm:text-base",
           FIranSans.className,
         )}>
         <ApolloClientProvider>
