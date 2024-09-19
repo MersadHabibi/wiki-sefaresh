@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    -webkit-text-size-adjust : none;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
