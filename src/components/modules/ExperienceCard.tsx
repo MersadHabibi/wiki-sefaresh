@@ -60,7 +60,7 @@ export default function ExperienceCard({ classNames, experience }: TProps) {
               .map((_, index) => (
                 <input
                   key={index}
-                  className="mask mask-star-2 size-5 dark:bg-neutral-600 sm:size-6"
+                  className="mask mask-star-2 size-5 bg-neutral-400 dark:bg-neutral-600 sm:size-6"
                 />
               ))}
           </div>
