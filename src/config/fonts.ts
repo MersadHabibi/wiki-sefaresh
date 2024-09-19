@@ -3,12 +3,12 @@ import localFont from "next/font/local";
 export const FMorabba = localFont({
   src: [
     {
-      path: "../../public/fonts/Morabba-Regular.ttf",
+      path: "../../public/fonts/Morabba-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../public/fonts/Morabba-Medium.ttf",
+      path: "../../public/fonts/Morabba-Medium.woff2",
       weight: "500",
       style: "normal",
     },
@@ -18,7 +18,7 @@ export const FMorabba = localFont({
       style: "normal",
     },
     {
-      path: "../../public/fonts/Morabba-Bold.ttf",
+      path: "../../public/fonts/Morabba-Bold.woff2",
       weight: "700",
       style: "normal",
     },

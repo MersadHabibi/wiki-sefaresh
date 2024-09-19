@@ -15,7 +15,7 @@ export default function Navbar() {
           <Link
             href={"/"}
             className={cn(
-              "pb-1 text-xl font-bold text-blue-700 dark:text-primary-dark sm:text-2xl",
+              "text-balance pb-1 text-xl font-bold text-blue-700 dark:text-primary-dark sm:text-2xl",
               FMorabba.className,
             )}>
             ویکی سفارش
