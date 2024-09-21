@@ -2,13 +2,13 @@
 
 import GET_POPULAR_STORES from "@/graphql/client/queries/GetPopularStores";
 import { useQuery } from "@apollo/client";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { useMediaQuery } from "usehooks-ts";
 
 export default function Stores() {
-  const isXLDevice = useMediaQuery("only screen and (min-width : 1280px)");
+  const isXLDevice = useMediaQuery("(min-width : 1280px)");
 
   const { loading, error, data } = useQuery(GET_POPULAR_STORES);
 

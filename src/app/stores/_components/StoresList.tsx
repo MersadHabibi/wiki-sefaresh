@@ -4,15 +4,15 @@ import Pagination from "@/components/modules/Pagination";
 import { STORES_SORTS } from "@/enums";
 import GET_All_STORES from "@/graphql/client/queries/GetAllStoresQuery";
 import { useQuery } from "@apollo/client";
-import { useMediaQuery } from "@uidotdev/usehooks";
 import { StoreIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
+import { useMediaQuery } from "usehooks-ts";
 
 export default function StoresList() {
   const searchParams = useSearchParams();
 
-  const isLGDevice = useMediaQuery("only screen and (min-width : 1024px)");
+  const isLGDevice = useMediaQuery("(min-width : 1024px)");
 
   const { loading, error, data } = useQuery(GET_All_STORES, {
     variables: {

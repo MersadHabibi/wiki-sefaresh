@@ -20,7 +20,6 @@
     "@tinymce/tinymce-react": "^5.1.1",
     "@types/date-fns": "^2.6.0",
     "@types/moment-jalaali": "^0.7.9",
-    "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "dotenv": "^16.4.5",
@@ -40,6 +39,7 @@
     "react-hot-toast": "^2.4.1",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.3.0",
+    "usehooks-ts": "^3.1.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
