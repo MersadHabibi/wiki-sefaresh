@@ -115,7 +115,7 @@ export default function StoreSection({ storeId }: { storeId: string }) {
           </div>
           <div className="flex w-full items-center justify-between px-2 py-4 text-base sm:text-lg">
             <p>تعداد تجربه ها</p>
-            <p className="">20</p>
+            <p className="">{data?.store.experiencesCount}</p>
           </div>
         </div>
         <Link
