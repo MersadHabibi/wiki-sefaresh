@@ -74,9 +74,11 @@ export default function StoresList() {
                   <h2 className="line-clamp-1">{store?.name}</h2>
                 </Link>
                 {/* <div className="mt-4 h-px w-full rounded-full bg-neutral-400 dark:bg-neutral-800"></div> */}
-                <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
+                <div className="mt-auto w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">
                   <div className="flex w-full items-center justify-center px-2 font-medium">
-                    <p className="line-clamp-4">{store?.activityField}</p>
+                    <p className="line-clamp-2 text-center">
+                      {store?.activityField}
+                    </p>
                   </div>
                   <div className="my-5 !h-px w-full bg-neutral-400 dark:bg-neutral-700"></div>
                   <div className="flex w-full items-center justify-between px-2">
@@ -124,7 +126,7 @@ export default function StoresList() {
                 </div>
                 <Link
                   href={`/experiences?storeId=${store?.id}`}
-                  className="btn btn-primary mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark">
+                  className="btn btn-primary sticky top-full mt-4 w-full rounded-md border-none bg-primary text-base font-medium text-font-color-dark">
                   دیدن تجربه ها
                 </Link>
               </div>
