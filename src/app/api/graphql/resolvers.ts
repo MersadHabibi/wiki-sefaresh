@@ -28,7 +28,6 @@ const resolvers = {
       ctx: TGraphQLContext,
     ) => {
       try {
-        console.log(args.sort);
         const stores = await ctx?.prisma?.store.findMany({
           orderBy: {
             score:

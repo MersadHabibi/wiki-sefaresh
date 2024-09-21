@@ -42,3 +42,15 @@ export function graphQLFetch<T>(
         responseJson.data[Object.keys(responseJson.data)[0]] as Promise<T>,
     );
 }
+
+export function isValidHttpUrl(string: string) {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+
+  return url.protocol === "http:" || url.protocol === "https:";
+}

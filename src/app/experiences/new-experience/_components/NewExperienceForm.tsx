@@ -34,8 +34,6 @@ export default function NewExperienceForm() {
   const router = useRouter();
 
   const onSubmit = async (data: NewExperienceFormData) => {
-    console.log("SUCCESS", data);
-
     if (isTrueStoreName) {
       clearErrors("storeName");
     } else {

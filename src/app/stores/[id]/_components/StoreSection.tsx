@@ -1,6 +1,7 @@
 "use client";
 
 import GET_STORE_BY_ID from "@/graphql/client/queries/GetStoreById";
+import { isValidHttpUrl } from "@/lib/utils";
 import { useQuery } from "@apollo/client";
 import { ArrowLeftIcon, StoreIcon } from "lucide-react";
 import Link from "next/link";
@@ -91,10 +92,16 @@ export default function StoreSection({ storeId }: { storeId: string }) {
             <p>آدرس تلگرام</p>
             {data?.store.telegram ? (
               <Link
-                href={`https://t.me/${data.store.telegram}`}
+                href={
+                  isValidHttpUrl(data.store.telegram)
+                    ? data.store.telegram
+                    : `https://t.me/${data.store.telegram}`
+                }
                 className="text-primary hover:underline dark:text-primary-dark"
                 target="_blank">
-                {data.store.telegram}
+                {isValidHttpUrl(data.store.telegram)
+                  ? "لینک"
+                  : data.store.telegram}
               </Link>
             ) : (
               <p className="font-normal opacity-70">ندارد</p>
@@ -104,10 +111,16 @@ export default function StoreSection({ storeId }: { storeId: string }) {
             <p>آدرس اینستاگرام</p>
             {data?.store.instagram ? (
               <Link
-                href={`https://instagram.com/${data.store.instagram}`}
+                href={
+                  isValidHttpUrl(data.store.instagram)
+                    ? data.store.instagram
+                    : `https://instagram.com/${data.store.instagram}`
+                }
                 className="text-primary hover:underline dark:text-primary-dark"
                 target="_blank">
-                {data.store.instagram}
+                {isValidHttpUrl(data.store.instagram)
+                  ? "لینک"
+                  : data.store.instagram}
               </Link>
             ) : (
               <p className="font-normal opacity-70">ندارد</p>

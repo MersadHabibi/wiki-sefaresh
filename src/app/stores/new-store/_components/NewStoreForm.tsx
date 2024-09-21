@@ -26,8 +26,6 @@ export default function NewStoreForm() {
   const router = useRouter();
 
   const onSubmit = async (data: NewStoreFormData) => {
-    console.log("SUCCESS", data);
-
     try {
       const res = await createStore({
         variables: { input: { ...data, website: data.website || undefined } },
