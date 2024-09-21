@@ -4,6 +4,13 @@ import SearchExperiences from "./_components/SearchExperiences";
 import SortExperiences, { sorts } from "./_components/SortExperiences";
 import StoreSelectBox from "./_components/StoreSelectBox";
 import { Suspense } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "تجربه ها",
+  description:
+    "پلتفرمی برای به اشتراک گذاری تجربیات از سفارشات آنلاین ✨ | لیست تجربه ها",
+};
 
 export default function ExperiencePage() {
   return (

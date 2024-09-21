@@ -1,6 +1,13 @@
 import { CircleAlertIcon } from "lucide-react";
 import Link from "next/link";
 import NewStoreForm from "./_components/NewStoreForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ثبت فروشگاه",
+  description:
+    "پلتفرمی برای به اشتراک گذاری تجربیات از سفارشات آنلاین ✨ | ثبت فروشگاه",
+};
 
 export default function NewStorePage() {
   return (

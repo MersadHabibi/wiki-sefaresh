@@ -1,6 +1,13 @@
 import { CircleAlertIcon } from "lucide-react";
 import Link from "next/link";
 import NewExperienceForm from "./_components/NewExperienceForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ثبت تجربه",
+  description:
+    "پلتفرمی برای به اشتراک گذاری تجربیات از سفارشات آنلاین ✨ | ثبت تجربه",
+};
 
 export default function NewExperiencePage() {
   return (

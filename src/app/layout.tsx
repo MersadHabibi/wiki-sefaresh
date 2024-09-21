@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     template: "ویکی سفارش | %s",
     default: "ویکی سفارش",
   },
+  description: "پلتفرمی برای به اشتراک گذاری تجربیات از سفارشات آنلاین ✨",
 };
 
 export default function RootLayout({

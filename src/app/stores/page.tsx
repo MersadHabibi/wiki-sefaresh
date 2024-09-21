@@ -3,6 +3,13 @@ import SearchStores from "./_components/SearchStores";
 import StoresList from "./_components/StoresList";
 import SortStores, { sorts } from "./_components/SortStores";
 import { Suspense } from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "فروشگاه ها",
+  description:
+    "پلتفرمی برای به اشتراک گذاری تجربیات از سفارشات آنلاین ✨ | لیست فروشگاه ها",
+};
 
 export default function StoresPage() {
   return (

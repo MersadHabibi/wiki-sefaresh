@@ -1,7 +1,38 @@
-import { ArrowLeftIcon, StoreIcon } from "lucide-react";
-import Link from "next/link";
-import StoreSection from "./_components/StoreSection";
+import { graphQLFetch } from "@/lib/utils";
+import { Metadata } from "next";
 import StoreExperiences from "./_components/StoreExperiences";
+import StoreSection from "./_components/StoreSection";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {
+    id: string;
+  };
+}): Promise<Metadata> {
+  const res: {
+    name: string;
+    activityField: string;
+  } = await graphQLFetch(
+    process.env.NEXT_PUBLIC_BACKEND_URL || "",
+    /* GraphQL */ `
+      query StoreById($storeId: ID!) {
+        store(id: $storeId) {
+          name
+          activityField
+        }
+      }
+    `,
+    {
+      storeId: params.id,
+    },
+  );
+
+  return {
+    title: res?.name,
+    description: res?.activityField,
+  };
+}
 
 export default function StorePage({
   params,

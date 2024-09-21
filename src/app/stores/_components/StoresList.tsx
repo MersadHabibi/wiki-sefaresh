@@ -71,7 +71,7 @@ export default function StoresList() {
                   href={`/stores/${store?.id}`}
                   className="flex items-center gap-x-3 px-2 pb-5 pt-1 text-2xl font-bold text-primary dark:text-primary-dark">
                   <StoreIcon className="size-8" />
-                  <h3 className="line-clamp-1">{store?.name}</h3>
+                  <h2 className="line-clamp-1">{store?.name}</h2>
                 </Link>
                 {/* <div className="mt-4 h-px w-full rounded-full bg-neutral-400 dark:bg-neutral-800"></div> */}
                 <div className="w-full rounded-md bg-neutral-300 px-4 py-6 text-sm font-medium dark:bg-neutral-800 sm:text-base">

@@ -54,7 +54,8 @@ export default function LandingHeader() {
           alt="landing svg"
           width={500}
           height={500}
-          priority={false}
+          quality={65}
+          sizes="(max-width: 0px) 350px, 350px, (max-width: 768px) 500px, 500px"
         />
         <Image
           className="hidden w-full object-cover pb-6 dark:block xs:pb-10"
@@ -62,7 +63,8 @@ export default function LandingHeader() {
           alt="landing svg"
           width={500}
           height={500}
-          priority={false}
+          quality={65}
+          sizes="(max-width: 0px) 350px, 350px, (max-width: 768px) 500px, 500px"
         />
       </div>
     </section>
