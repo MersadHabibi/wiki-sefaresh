@@ -38,3 +38,6 @@ next-env.d.ts
 
 /public/robots.txt
 /public/*.xml
+
+/src/app/robots.ts
+/src/app/sitemap.ts
