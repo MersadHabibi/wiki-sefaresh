@@ -16,6 +16,10 @@ export default function notFound() {
             width={900}
             height={400}
           />
+
+
+
+          
         </div>
         <div className="flex flex-col items-center pt-10">
           <h1
